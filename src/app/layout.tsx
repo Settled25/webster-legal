@@ -16,9 +16,19 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://webster.legal"),
   title: "Webster | La firma que te cobra",
   description:
     "Webster es una firma de abogados en Puerto Rico que utiliza inteligencia artificial para recuperar cuentas comerciales por cobrar.",
+  openGraph: {
+    title: "Webster | La firma que te cobra",
+    description:
+      "Recuperamos tus cuentas por cobrar comerciales de hasta $15K. Solo cobramos si tú cobras.",
+    url: "https://webster.legal",
+    siteName: "Webster",
+    locale: "es_PR",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -31,7 +41,53 @@ export default function RootLayout({
       lang="es"
       className={`${instrumentSerif.variable} ${GeistSans.variable} ${GeistMono.variable}`}
     >
-      <head />
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LegalService",
+              name: "Webster",
+              description:
+                "Firma de abogados en Puerto Rico especializada en recuperación de cuentas por cobrar comerciales.",
+              url: "https://webster.legal",
+              telephone: "+19393530566",
+              email: "info@webster.legal",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress:
+                  "1519 Ave. Ponce de Leon Suite 717, Cond. 1st Federal Saving Building",
+                addressLocality: "San Juan",
+                addressRegion: "PR",
+                postalCode: "00909-1718",
+                addressCountry: "US",
+              },
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: 18.4505,
+                longitude: -66.0726,
+              },
+              areaServed: {
+                "@type": "AdministrativeArea",
+                name: "Puerto Rico",
+              },
+              priceRange: "Solo cobramos si tú cobras",
+              serviceType: [
+                "Debt Collection",
+                "Commercial Debt Recovery",
+                "Cobro de deudas comerciales",
+              ],
+              knowsLanguage: ["es", "en"],
+              founder: {
+                "@type": "Person",
+                name: "Adrián Jiménez",
+                jobTitle: "Abogado",
+              },
+            }),
+          }}
+        />
+      </head>
       <body>
         <Providers>
           <Navbar />
