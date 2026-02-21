@@ -74,7 +74,7 @@ export function Footer() {
 
         <div className="flex flex-col md:flex-row justify-between gap-4">
           <p className="text-[13px] text-zinc-600">
-            &copy; 2026 Webster Law, LLC. Todos los derechos reservados.
+            &copy; 2026 Webster. Todos los derechos reservados.
           </p>
         </div>
       </div>
