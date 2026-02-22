@@ -28,6 +28,14 @@ export const metadata: Metadata = {
     siteName: "Webster",
     locale: "es_PR",
     type: "website",
+    images: [
+      {
+        url: "https://webster.legal/og-image.jpg",
+        width: 1024,
+        height: 1024,
+        alt: "Webster - Recupera tus cuentas por cobrar",
+      },
+    ],
   },
 };
 
