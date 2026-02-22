@@ -69,7 +69,7 @@ const valueCards = [
 const faqItems = [
   {
     question: "¿Webster es una agencia de cobro?",
-    answer: "No. Webster es una firma de abogados, no una agencia de cobro. Velamos por la preservación de tu relación comercial durante el proceso antes de tomar alguna acción legal seria. Sin amenazas, sin presión.",
+    answer: "No. Webster es una firma de abogados, no una agencia de cobro. Velamos por la preservación de tu relación comercial durante el proceso antes de tomar alguna acción legal seria.",
   },
   {
     question: "¿Cuál es la deuda mínima para trabajar con Webster?",
@@ -249,7 +249,7 @@ export default function HomePage() {
                 Reclamación formal
               </h3>
               <p className="font-body text-base text-zinc-600 mt-3 leading-relaxed">
-                Iniciamos la comunicación profesional con el deudor mediante un recordatorio por escrito o una carta de reclamación. Incluye negociación directa y acuerdos de pago. La mayoría de los casos se resuelven aquí.
+                Evaluamos tu situación y decidimos juntos el mejor enfoque, desde un recordatorio amistoso hasta una carta formal de reclamación. Negociamos directamente con el deudor y te mantenemos informado. La mayoría de los casos se resuelven aquí.
               </p>
             </div>
 
