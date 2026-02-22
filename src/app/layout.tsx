@@ -42,6 +42,8 @@ export default function RootLayout({
       className={`${instrumentSerif.variable} ${GeistSans.variable} ${GeistMono.variable}`}
     >
       <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
