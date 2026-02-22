@@ -67,7 +67,7 @@ export default function ContactoPage() {
           </h1>
           <p className="font-body text-lg text-zinc-400 mt-4 max-w-xl">
             ¿Tienes cuentas por cobrar? Agenda una consulta gratuita con un
-            abogado. Sin compromiso, sin costo.
+            abogado.
           </p>
         </motion.div>
       </section>

@@ -85,8 +85,7 @@ export default function SobreNosotrosPage() {
             ¿Listo para recuperar lo que te deben?
           </h2>
           <p className="font-body text-lg text-zinc-600 mt-4">
-            Agenda una consulta gratuita con un abogado. Sin compromiso, sin
-            costo.
+            Agenda una consulta gratuita con un abogado.
           </p>
           <div className="mt-8">
             <ModalButton className="inline-flex items-center justify-center bg-pine text-white hover:bg-pine-dark transition-colors duration-200 rounded-btn h-[52px] px-8 font-body text-[17px] font-semibold">

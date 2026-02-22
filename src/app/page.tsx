@@ -560,7 +560,7 @@ export default function HomePage() {
             Deja de perseguir. Empieza a cobrar.
           </h2>
           <p className="font-body text-lg text-white/70 mt-4">
-            Consulta gratuita con un abogado. Sin compromiso, sin costo.
+            Consulta gratuita con un abogado.
           </p>
           <div className="mt-8">
             <ModalButton className="inline-flex items-center justify-center bg-white text-pine hover:bg-zinc-100 transition-colors duration-200 rounded-btn h-14 px-8 font-body text-[17px] font-semibold">
