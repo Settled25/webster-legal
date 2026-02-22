@@ -1,8 +1,9 @@
 "use client";
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, Clock, Check } from "lucide-react";
+import { Mail, Phone, Clock } from "lucide-react";
 import { fadeUp, fadeIn, staggerContainer } from "@/lib/animations";
+
+const JOTFORM_URL = "https://form.jotform.com/260526971985067";
 
 const contactInfo = [
   {
@@ -26,29 +27,6 @@ const contactInfo = [
 ];
 
 export default function ContactoPage() {
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    const form = e.target as HTMLFormElement;
-    const data = new FormData(form);
-    try {
-      const res = await fetch("https://formspree.io/f/mzdaandk", {
-        method: "POST",
-        body: data,
-        headers: { Accept: "application/json" },
-      });
-      if (res.ok) {
-        setSubmitted(true);
-      }
-    } catch {
-      // silent fail — form still shows
-    }
-    setLoading(false);
-  };
-
   return (
     <main>
       {/* Header */}
@@ -128,102 +106,33 @@ export default function ContactoPage() {
 
             </motion.div>
 
-            {/* Right — consultation form */}
+            {/* Right — consultation CTA */}
             <motion.div
               variants={fadeUp}
               initial="hidden"
               animate="visible"
             >
-              <div className="bg-snow border border-zinc-200 rounded-card p-10">
-                {submitted ? (
-                  <div className="flex flex-col items-center justify-center py-12 text-center">
-                    <div className="w-14 h-14 rounded-full bg-pine-light flex items-center justify-center mb-6">
-                      <Check size={28} className="text-pine" />
-                    </div>
-                    <h3 className="font-heading text-[24px] text-black">
-                      Mensaje recibido
-                    </h3>
-                    <p className="font-body text-base text-zinc-600 mt-3 max-w-sm">
-                      Nos comunicaremos contigo lo antes posible para
-                      coordinar tu consulta gratuita.
-                    </p>
-                  </div>
-                ) : (
-                  <>
-                    <h3 className="font-heading text-[24px] text-black">
-                      Solicitar consulta gratuita
-                    </h3>
-                    <p className="font-body text-sm text-zinc-600 mt-2">
-                      Completa el formulario y un abogado se comunicará contigo.
-                    </p>
-
-                    <form onSubmit={handleSubmit} className="mt-8 space-y-5">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                        <div>
-                          <label className="font-body text-xs font-semibold text-zinc-500 uppercase tracking-widest block mb-2">
-                            Nombre
-                          </label>
-                          <input
-                            type="text"
-                            name="nombre"
-                            required
-                            placeholder="Tu nombre"
-                            className="w-full h-11 border border-zinc-200 rounded-btn px-4 font-body text-base bg-white focus:ring-2 focus:ring-pine focus:border-pine focus:outline-none transition"
-                          />
-                        </div>
-                        <div>
-                          <label className="font-body text-xs font-semibold text-zinc-500 uppercase tracking-widest block mb-2">
-                            Empresa
-                          </label>
-                          <input
-                            type="text"
-                            name="empresa"
-                            placeholder="Nombre de tu negocio"
-                            className="w-full h-11 border border-zinc-200 rounded-btn px-4 font-body text-base bg-white focus:ring-2 focus:ring-pine focus:border-pine focus:outline-none transition"
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className="font-body text-xs font-semibold text-zinc-500 uppercase tracking-widest block mb-2">
-                          Correo electrónico
-                        </label>
-                        <input
-                          type="email"
-                          name="email"
-                          required
-                          placeholder="tu@correo.com"
-                          className="w-full h-11 border border-zinc-200 rounded-btn px-4 font-body text-base bg-white focus:ring-2 focus:ring-pine focus:border-pine focus:outline-none transition"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="font-body text-xs font-semibold text-zinc-500 uppercase tracking-widest block mb-2">
-                          Teléfono
-                        </label>
-                        <input
-                          type="tel"
-                          name="telefono"
-                          placeholder="(787) 000-0000"
-                          className="w-full h-11 border border-zinc-200 rounded-btn px-4 font-body text-base bg-white focus:ring-2 focus:ring-pine focus:border-pine focus:outline-none transition"
-                        />
-                      </div>
-
-                      <button
-                        type="submit"
-                        disabled={loading}
-                        className="w-full h-12 bg-pine text-white font-body font-semibold text-base rounded-btn hover:bg-pine-dark transition-colors duration-200 disabled:opacity-70"
-                      >
-                        {loading ? "Enviando..." : "Solicitar consulta gratuita →"}
-                      </button>
-
-                      <p className="font-body text-xs text-zinc-400 text-center">
-                        Al enviar este formulario aceptas que un abogado de
-                        Webster se comunique contigo para evaluar tu caso.
-                      </p>
-                    </form>
-                  </>
-                )}
+              <div className="bg-snow border border-zinc-200 rounded-card p-10 flex flex-col items-center justify-center text-center">
+                <h3 className="font-heading text-[24px] text-black">
+                  Solicitar consulta gratuita
+                </h3>
+                <p className="font-body text-sm text-zinc-600 mt-2">
+                  Completa el formulario y un abogado se comunicará contigo.
+                </p>
+                <div className="mt-8">
+                  <a
+                    href={JOTFORM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center w-full h-12 bg-pine text-white font-body font-semibold text-base rounded-btn hover:bg-pine-dark transition-colors duration-200 px-8"
+                  >
+                    Solicitar consulta gratuita →
+                  </a>
+                </div>
+                <p className="font-body text-xs text-zinc-400 text-center mt-5">
+                  Al completar el formulario aceptas que un abogado de
+                  Webster se comunique contigo para evaluar tu caso.
+                </p>
               </div>
             </motion.div>
           </div>

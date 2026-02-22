@@ -1,20 +1,19 @@
-"use client";
-import { useModal } from "@/context/ModalContext";
-
 interface ModalButtonProps {
   children: React.ReactNode;
   className?: string;
-  onClick?: () => void;
 }
 
-export function ModalButton({ children, className, onClick }: ModalButtonProps) {
-  const { open } = useModal();
+const JOTFORM_URL = "https://form.jotform.com/260526971985067";
+
+export function ModalButton({ children, className }: ModalButtonProps) {
   return (
-    <button
-      onClick={() => { open(); onClick?.(); }}
+    <a
+      href={JOTFORM_URL}
+      target="_blank"
+      rel="noopener noreferrer"
       className={className}
     >
       {children}
-    </button>
+    </a>
   );
 }
