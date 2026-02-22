@@ -66,7 +66,7 @@ export default function ContactoPage() {
             Contáctanos
           </h1>
           <p className="font-body text-lg text-zinc-400 mt-4 max-w-xl">
-            ¿Tienes una cuenta por cobrar? Agenda una consulta gratuita con un
+            ¿Tienes cuentas por cobrar? Agenda una consulta gratuita con un
             abogado. Sin compromiso, sin costo.
           </p>
         </motion.div>
