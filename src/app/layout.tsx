@@ -17,11 +17,11 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://webster.legal"),
-  title: "Webster | La firma que te cobra",
+  title: "Webster | Recupera tus cuentas por cobrar",
   description:
     "Webster es una firma de abogados en Puerto Rico que utiliza inteligencia artificial para recuperar cuentas comerciales por cobrar.",
   openGraph: {
-    title: "Webster | La firma que te cobra",
+    title: "Webster | Recupera tus cuentas por cobrar",
     description:
       "Recuperamos tus cuentas por cobrar comerciales de hasta $15K. Solo cobramos si tú cobras.",
     url: "https://webster.legal",
