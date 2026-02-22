@@ -79,7 +79,7 @@ export function ConsultaModal() {
                   </h3>
                   <p className="font-body text-base text-zinc-600 mt-3 max-w-sm">
                     Nos comunicaremos contigo lo antes posible para
-                    coordinar tu consulta gratis.
+                    coordinar tu consulta gratuita.
                   </p>
                 </div>
               ) : (

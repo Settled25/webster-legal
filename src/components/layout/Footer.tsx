@@ -47,7 +47,7 @@ export function Footer() {
             <ul className="space-y-2 font-body text-[15px] text-zinc-300">
               <li>info@webster.legal</li>
               <li>(939) 353-0566</li>
-              <li>1519 Ave. Ponce de Leon Suite 717<br />Cond. 1st Federal Saving Building<br />San Juan, P.R. 00909-1718</li>
+              <li>1519 Ave. Ponce de León Suite 717<br />Cond. 1st Federal Saving Building<br />San Juan, P.R. 00909-1718</li>
             </ul>
           </div>
 

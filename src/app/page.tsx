@@ -43,7 +43,7 @@ const valueCards = [
   {
     icon: Wallet,
     title: "Recupera tu dinero",
-    body: "Brindale aire a tu negocio recuperando todo el dinero que tiene regado entre clientes.",
+    body: "Bríndale aire a tu negocio recuperando todo el dinero que tiene regado entre clientes.",
     tag: "Dinero para operar",
   },
   {
@@ -73,7 +73,7 @@ const faqItems = [
   },
   {
     question: "¿Cuál es la deuda mínima para trabajar con Webster?",
-    answer: "Webster trabaja con deudas comerciales de $1,000.00 o más. Si tu deuda no alcanza este mínimo, te lo haremos saber en la consulta gratuita y te orientaremos sobre tus opciones.",
+    answer: "Webster trabaja con deudas comerciales de $1,000 a $15,000. Si tu deuda no está dentro de este rango, te lo haremos saber en la consulta gratuita y te orientaremos sobre tus opciones.",
   },
   {
     question: "¿Cómo funciona el modelo de honorarios?",

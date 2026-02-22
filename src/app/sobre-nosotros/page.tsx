@@ -65,7 +65,7 @@ export default function SobreNosotrosPage() {
               oficial jurídico en el Tribunal Federal del Distrito de Puerto Rico
               bajo los jueces Gustavo Gelpí y Silvia Carreño Coll. También
               trabajó en las firmas de abogados DLA Piper (PR) y Pietrantoni
-              Méndez &amp; Alvarez.
+              Méndez & Álvarez.
             </p>
           </motion.div>
         </div>
@@ -84,12 +84,12 @@ export default function SobreNosotrosPage() {
           <h2 className="font-heading text-[36px] text-white">
             ¿Listo para recuperar lo que te deben?
           </h2>
-          <p className="font-body text-lg text-zinc-600 mt-4">
+          <p className="font-body text-lg text-white/70 mt-4">
             Agenda una consulta gratuita con un abogado.
           </p>
           <div className="mt-8">
             <ModalButton className="inline-flex items-center justify-center bg-pine text-white hover:bg-pine-dark transition-colors duration-200 rounded-btn h-[52px] px-8 font-body text-[17px] font-semibold">
-              Solicitar Consulta Gratuita →
+              Solicitar consulta gratuita →
             </ModalButton>
           </div>
         </motion.div>

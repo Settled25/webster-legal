@@ -135,7 +135,6 @@ export default function ContactoPage() {
               animate="visible"
             >
               <div className="bg-snow border border-zinc-200 rounded-card p-10">
-                {/* TODO: Replace with Jotform embed when ready */}
                 {submitted ? (
                   <div className="flex flex-col items-center justify-center py-12 text-center">
                     <div className="w-14 h-14 rounded-full bg-pine-light flex items-center justify-center mb-6">
@@ -146,7 +145,7 @@ export default function ContactoPage() {
                     </h3>
                     <p className="font-body text-base text-zinc-600 mt-3 max-w-sm">
                       Nos comunicaremos contigo lo antes posible para
-                      coordinar tu consulta gratis.
+                      coordinar tu consulta gratuita.
                     </p>
                   </div>
                 ) : (
