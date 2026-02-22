@@ -77,11 +77,11 @@ const faqItems = [
   },
   {
     question: "¿Cómo funciona el modelo de honorarios?",
-    answer: "Webster trabaja con honorarios de contingencia. Solo cobramos un porcentaje de lo que recuperamos para ti. Si no recuperamos nada, no debes nada. El porcentaje varía según la etapa: 15% en prelitigio, 25% en litigio, y 33% en ejecución de sentencia.",
+    answer: "Webster trabaja con honorarios de contingencia. Solo cobramos un porcentaje de lo que recuperamos para ti. Si no recuperamos nada, no debes nada.",
   },
   {
     question: "¿Cuánto tiempo toma el proceso de cobro?",
-    answer: "Depende de la complejidad del caso y la respuesta del deudor. Muchas gestiones de prelitigio se resuelven en las primeras dos a cuatro semanas. Los casos que requieren litigio pueden tomar varios meses. En la consulta gratuita te damos un estimado basado en tu situación específica.",
+    answer: "Depende de la complejidad del caso y la respuesta del deudor. Muchas gestiones de prelitigio se resuelven en las primeras dos a cuatro semanas. Los casos que requieren litigio pueden tomar varios meses.",
   },
   {
     question: "¿Qué documentos necesito para comenzar?",
@@ -93,7 +93,7 @@ const faqItems = [
   },
   {
     question: "¿El deudor sabrá que contraté a Webster?",
-    answer: "Sí. Nos comunicamos directamente con el deudor en tu representación. Toda comunicación es profesional, clara y respaldada por un abogado. Nuestro objetivo es que paguen, no crear conflictos innecesarios.",
+    answer: "Sí. Nos comunicamos directamente con el deudor en tu representación. Toda comunicación es profesional, clara y respaldada por un abogado.",
   },
   {
     question: "¿Webster maneja cobros fuera de Puerto Rico?",
@@ -195,7 +195,7 @@ export default function HomePage() {
               },
               {
                 title: "Cobrar por tu cuenta te debilita",
-                body: "Le llevas meses enviando la factura de tus servicios de contabilidad. Cada intento ignorado te quita tiempo de servir a clientes que sí pagan a tiempo.",
+                body: "Llevas meses persiguiendo a tu cliente con la factura de tus servicios de contabilidad. Cada intento ignorado te quita tiempo de servir a clientes que sí pagan a tiempo.",
               },
             ].map((card) => (
               <motion.div key={card.title} variants={fadeUp}>
@@ -271,7 +271,7 @@ export default function HomePage() {
                 <div className="flex justify-start">
                   <div className="max-w-[85%] bg-white border border-zinc-200 rounded-card px-4 py-3">
                     <p className="font-body text-sm text-zinc-600 leading-relaxed">
-                      &ldquo;Saludos, recibimos su comunicación. No vamos a pagar. Los productos llegaron defectuosos.&rdquo;
+                      Saludos, recibimos su comunicación. No vamos a pagar. Los productos llegaron defectuosos.
                     </p>
                     <p className="font-mono text-[10px] text-zinc-400 mt-2">Acme Corp.</p>
                   </div>
@@ -280,7 +280,7 @@ export default function HomePage() {
                 <div className="flex justify-end">
                   <div className="max-w-[85%] bg-pine-light border border-pine/10 rounded-card px-4 py-3">
                     <p className="font-body text-sm text-zinc-700 leading-relaxed">
-                      &ldquo;Gracias por responder nuestro correo. Revisamos la documentación de esta transacción. Adjuntamos un acuse de recibo firmado por su personal confirmando que los productos se recibieron en buen estado. ¿Tiene alguna prueba que nos pueda enviar que establezca que los productos llegaron defectuosos?&rdquo;
+                      Gracias por responder nuestro correo. Revisamos la documentación de esta transacción. Adjuntamos un acuse de recibo firmado por su personal confirmando que los productos se recibieron en buen estado. ¿Tiene alguna prueba que nos pueda enviar que establezca que los productos llegaron defectuosos?
                     </p>
                     <p className="font-mono text-[10px] text-pine mt-2">Webster</p>
                   </div>
