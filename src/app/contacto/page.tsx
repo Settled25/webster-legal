@@ -38,7 +38,7 @@ export default function ContactoPage() {
           className="max-w-[1200px] mx-auto px-6"
         >
           <p className="font-mono text-xs text-pine uppercase tracking-[3px] mb-6">
-            Webster — Puerto Rico
+            Webster · Puerto Rico
           </p>
           <h1 className="font-heading text-[56px] md:text-[40px] text-white leading-tight">
             Contáctanos

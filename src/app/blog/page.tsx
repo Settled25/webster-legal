@@ -32,7 +32,7 @@ const blogPosts = [
     category: "FLUJO DE CAJA",
     title: "El impacto de las cuentas incobrables en tu negocio",
     excerpt:
-      "Las cuentas por cobrar vencidas afectan más que tu balance — afectan tu capacidad de operar, invertir y crecer.",
+      "Las cuentas por cobrar vencidas afectan más que tu balance. Afectan tu capacidad de operar, invertir y crecer.",
     date: "5 de febrero de 2026",
   },
   {

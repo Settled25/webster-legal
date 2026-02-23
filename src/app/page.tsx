@@ -262,7 +262,7 @@ export default function HomePage() {
                 </div>
                 <div className="min-w-0">
                   <p className="font-body text-sm font-semibold text-black">Comunicación con Acme Corp.</p>
-                  <p className="font-mono text-[11px] text-zinc-400 truncate">Factura #1247 — $8,400 pendiente desde octubre</p>
+                  <p className="font-mono text-[11px] text-zinc-400 truncate">Factura #1247 · $8,400 pendiente desde octubre</p>
                 </div>
               </div>
               {/* Messages */}

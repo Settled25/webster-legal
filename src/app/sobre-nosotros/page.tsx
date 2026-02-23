@@ -39,7 +39,7 @@ export default function SobreNosotrosPage() {
             <div className="rounded-card overflow-hidden w-full max-w-[400px] mx-auto md:mx-0">
               <Image
                 src="/foto-profesional.jpg"
-                alt="Adrián Jiménez — Abogado Fundador, Webster"
+                alt="Adrián Jiménez, Abogado Fundador de Webster"
                 width={412}
                 height={467}
                 className="w-full h-auto"
