@@ -165,8 +165,14 @@ export default function HomePage() {
               className="mt-10"
             >
               <ModalButton className="inline-flex items-center justify-center bg-pine text-white hover:bg-pine-dark transition-colors duration-200 rounded-btn h-14 px-8 font-body font-semibold text-[17px]">
-                Empieza a recobrar →
+                Consulta gratis →
               </ModalButton>
+              <a
+                href="/#servicios"
+                className="block mt-4 font-body text-[15px] text-pine hover:text-pine-dark transition-colors duration-200 underline underline-offset-4"
+              >
+                Ver cómo funciona
+              </a>
             </motion.div>
           </div>
         </div>
@@ -402,6 +408,20 @@ export default function HomePage() {
             ))}
           </div>
         </motion.div>
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="text-center mt-16"
+        >
+          <a
+            href="https://form.jotform.com/260526971985067"
+            className="inline-flex items-center justify-center bg-pine text-white hover:bg-pine-dark transition-colors duration-200 rounded-btn h-14 px-8 font-body font-semibold text-[17px]"
+          >
+            ¿Califico? →
+          </a>
+        </motion.div>
       </Section>
 
       {/* ── Section 5: Value Propositions (2×2 grid) ─────────────────────── */}
@@ -434,6 +454,21 @@ export default function HomePage() {
               </Card>
             </motion.div>
           ))}
+        </motion.div>
+
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="text-center mt-16"
+        >
+          <a
+            href="https://form.jotform.com/260526971985067"
+            className="inline-flex items-center justify-center bg-pine text-white hover:bg-pine-dark transition-colors duration-200 rounded-btn h-14 px-8 font-body font-semibold text-[17px]"
+          >
+            Empieza a cobrar →
+          </a>
         </motion.div>
       </Section>
 
@@ -564,7 +599,7 @@ export default function HomePage() {
           </p>
           <div className="mt-8">
             <ModalButton className="inline-flex items-center justify-center bg-white text-pine hover:bg-zinc-100 transition-colors duration-200 rounded-btn h-14 px-8 font-body text-[17px] font-semibold">
-              Empieza a recobrar →
+              Habla con un abogado →
             </ModalButton>
           </div>
         </motion.div>
