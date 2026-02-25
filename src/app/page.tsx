@@ -189,7 +189,7 @@ export default function HomePage() {
               </ModalButton>
               <a
                 href="/#servicios"
-                className="inline-flex items-center gap-1.5 mt-4 font-body text-[15px] text-pine hover:text-pine-dark transition-colors duration-200 underline underline-offset-4"
+                className="flex items-center gap-1.5 mt-4 font-body text-[15px] text-pine hover:text-pine-dark transition-colors duration-200 underline underline-offset-4 w-fit"
               >
                 Ver cómo funciona
                 <ChevronDown size={15} className="flex-shrink-0" aria-hidden />
