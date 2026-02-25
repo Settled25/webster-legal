@@ -8,6 +8,7 @@ import {
   Inbox,
   Mail,
   Check,
+  ChevronDown,
 } from "lucide-react";
 import { Section } from "@/components/layout/Section";
 import { Card } from "@/components/ui/Card";
@@ -118,7 +119,7 @@ export default function HomePage() {
 
       {/* ── Section 1: Hero ───────────────────────────────────────────────── */}
       <section className="bg-white min-h-[90vh] flex flex-col justify-center pt-[72px] relative overflow-hidden">
-        {/* Full-width dot grid — fades from right to left */}
+        {/* Dot grid — desktop: fades from right to left */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -129,6 +130,20 @@ export default function HomePage() {
             backgroundSize: "32px 32px",
             maskImage: "linear-gradient(to left, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.25) 25%, rgba(0,0,0,0.1) 45%, rgba(0,0,0,0.03) 60%, transparent 72%)",
             WebkitMaskImage: "linear-gradient(to left, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.25) 25%, rgba(0,0,0,0.1) 45%, rgba(0,0,0,0.03) 60%, transparent 72%)",
+          }}
+        />
+
+        {/* Dot grid — mobile: simplified, lower opacity, fades from bottom-right */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6, duration: 1.4 }}
+          className="absolute inset-0 pointer-events-none md:hidden"
+          style={{
+            backgroundImage: "radial-gradient(circle, #2D5E4A 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
+            maskImage: "radial-gradient(ellipse at 100% 100%, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.08) 40%, transparent 70%)",
+            WebkitMaskImage: "radial-gradient(ellipse at 100% 100%, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.08) 40%, transparent 70%)",
           }}
         />
 
@@ -174,9 +189,10 @@ export default function HomePage() {
               </ModalButton>
               <a
                 href="/#servicios"
-                className="block mt-4 font-body text-[15px] text-pine hover:text-pine-dark transition-colors duration-200 underline underline-offset-4"
+                className="inline-flex items-center gap-1.5 mt-4 font-body text-[15px] text-pine hover:text-pine-dark transition-colors duration-200 underline underline-offset-4"
               >
                 Ver cómo funciona
+                <ChevronDown size={15} className="flex-shrink-0" aria-hidden />
               </a>
             </motion.div>
           </div>
@@ -224,8 +240,85 @@ export default function HomePage() {
         </motion.div>
       </Section>
 
-      {/* ── Section 3: Nuestro Proceso ─────────────────────────────────────── */}
-      <Section className="bg-white" id="servicios">
+      {/* ── Section 3: Cómo funciona (client intake steps) ───────────────── */}
+      <Section className="bg-snow" id="servicios">
+        <motion.h2
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="font-heading text-[28px] md:text-[40px] text-black text-center mb-16"
+        >
+          Cómo funciona
+        </motion.h2>
+
+        {/* Desktop */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="hidden md:grid grid-cols-3 gap-8 relative"
+        >
+          {steps.map((step, i) => (
+            <div key={step.number} className="relative">
+              <StepCard {...step} />
+              {i < steps.length - 1 && (
+                <svg
+                  className="absolute top-8 -right-4 w-8 h-px overflow-visible"
+                  viewBox="0 0 32 1"
+                >
+                  <motion.line
+                    x1="0" y1="0.5" x2="32" y2="0.5"
+                    stroke="#D4D4D8"
+                    strokeWidth="1"
+                    variants={drawLine}
+                  />
+                </svg>
+              )}
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Mobile */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="md:hidden relative pl-8"
+        >
+          <motion.div
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="absolute left-0 top-0 bottom-0 w-px bg-zinc-300 origin-top"
+          />
+          <div className="space-y-12">
+            {steps.map((step) => (
+              <StepCard key={step.number} {...step} />
+            ))}
+          </div>
+        </motion.div>
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="text-center mt-16"
+        >
+          <a
+            href="https://form.jotform.com/260526971985067"
+            className="inline-flex items-center justify-center bg-pine text-white hover:bg-pine-dark transition-colors duration-200 rounded-btn h-14 px-8 font-body font-semibold text-[17px]"
+          >
+            ¿Califico? →
+          </a>
+        </motion.div>
+      </Section>
+
+      {/* ── Section 4: Nuestro Proceso (legal escalation stages) ─────────── */}
+      <Section className="bg-white">
         <div className="text-center mb-16">
           <h2 className="font-heading text-[28px] md:text-[40px] text-black">
             Un proceso diseñado para resolver tu caso.
@@ -358,83 +451,6 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ── Section 4: How It Works ───────────────────────────────────────── */}
-      <Section className="bg-white">
-        <motion.h2
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          className="font-heading text-[28px] md:text-[40px] text-black text-center mb-16"
-        >
-          Cómo funciona
-        </motion.h2>
-
-        {/* Desktop */}
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          className="hidden md:grid grid-cols-3 gap-8 relative"
-        >
-          {steps.map((step, i) => (
-            <div key={step.number} className="relative">
-              <StepCard {...step} />
-              {i < steps.length - 1 && (
-                <svg
-                  className="absolute top-8 -right-4 w-8 h-px overflow-visible"
-                  viewBox="0 0 32 1"
-                >
-                  <motion.line
-                    x1="0" y1="0.5" x2="32" y2="0.5"
-                    stroke="#D4D4D8"
-                    strokeWidth="1"
-                    variants={drawLine}
-                  />
-                </svg>
-              )}
-            </div>
-          ))}
-        </motion.div>
-
-        {/* Mobile */}
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          className="md:hidden relative pl-8"
-        >
-          <motion.div
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="absolute left-0 top-0 bottom-0 w-px bg-zinc-300 origin-top"
-          />
-          <div className="space-y-12">
-            {steps.map((step) => (
-              <StepCard key={step.number} {...step} />
-            ))}
-          </div>
-        </motion.div>
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          className="text-center mt-16"
-        >
-          <a
-            href="https://form.jotform.com/260526971985067"
-            className="inline-flex items-center justify-center bg-pine text-white hover:bg-pine-dark transition-colors duration-200 rounded-btn h-14 px-8 font-body font-semibold text-[17px]"
-          >
-            ¿Califico? →
-          </a>
-        </motion.div>
-      </Section>
-
       {/* ── Section 5: Value Propositions (2×2 grid) ─────────────────────── */}
       <Section className="bg-snow">
         <h2 className="font-heading text-[28px] md:text-[40px] text-black text-center mb-16">
@@ -484,7 +500,12 @@ export default function HomePage() {
       </Section>
 
       {/* ── Section 6: AI Section ─────────────────────────────────────────── */}
-      <section className="bg-[#09090B] py-24 md:py-16">
+      <section
+        className="py-24 md:py-16"
+        style={{
+          background: "radial-gradient(ellipse at 50% 40%, #17171a 0%, #09090B 55%, #040406 100%)",
+        }}
+      >
         <motion.div
           variants={fadeIn}
           initial="hidden"
@@ -563,7 +584,7 @@ export default function HomePage() {
               <Card className={`text-center py-10 relative ${card.featured ? "border-pine bg-pine-light/30" : ""}`}>
                 {card.featured && (
                   <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 inline-flex items-center bg-pine text-white font-mono text-[11px] uppercase tracking-[2px] px-4 py-1 rounded-full">
-                    Mas comun
+                    Mayoría de casos
                   </span>
                 )}
                 <p className="font-mono text-xs text-pine uppercase tracking-[2px]">
@@ -599,7 +620,13 @@ export default function HomePage() {
       </Section>
 
       {/* ── Section 9: Final CTA ──────────────────────────────────────────── */}
-      <section id="contacto" className="bg-pine py-24">
+      <section
+        id="contacto"
+        className="py-24"
+        style={{
+          background: "radial-gradient(ellipse at 50% 35%, #3d7560 0%, #2D5E4A 50%, #1c3e30 100%)",
+        }}
+      >
         <motion.div
           variants={fadeUp}
           initial="hidden"
