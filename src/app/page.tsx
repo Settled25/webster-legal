@@ -143,11 +143,16 @@ export default function HomePage() {
               Firma de Abogados · Puerto Rico
             </motion.p>
 
-            <h1 className="font-heading text-[38px] sm:text-[52px] md:text-[72px] leading-[1.05] text-black">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
+              className="font-heading text-[38px] sm:text-[52px] md:text-[72px] leading-[1.05] text-black"
+            >
               Cobra lo que te deben.
               <br />
               <span className="text-pine">Protege tu flujo de dinero y reputación.</span>
-            </h1>
+            </motion.h1>
 
             <motion.p
               initial={{ opacity: 0 }}
@@ -188,7 +193,7 @@ export default function HomePage() {
         >
           <motion.h2
             variants={fadeUp}
-            className="font-heading text-[40px] md:text-[32px] text-black text-center mb-12"
+            className="font-heading text-[28px] md:text-[40px] text-black text-center mb-12"
           >
             Las deudas pequeñas se quedan sin cobrar.
           </motion.h2>
@@ -222,7 +227,7 @@ export default function HomePage() {
       {/* ── Section 3: Nuestro Proceso ─────────────────────────────────────── */}
       <Section className="bg-white" id="servicios">
         <div className="text-center mb-16">
-          <h2 className="font-heading text-[40px] md:text-[32px] text-black">
+          <h2 className="font-heading text-[28px] md:text-[40px] text-black">
             Un proceso diseñado para resolver tu caso.
           </h2>
           <p className="font-body text-lg text-zinc-600 mt-4 max-w-2xl mx-auto">
@@ -355,9 +360,15 @@ export default function HomePage() {
 
       {/* ── Section 4: How It Works ───────────────────────────────────────── */}
       <Section className="bg-white">
-        <h2 className="font-heading text-[40px] text-black text-center mb-16">
+        <motion.h2
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="font-heading text-[28px] md:text-[40px] text-black text-center mb-16"
+        >
           Cómo funciona
-        </h2>
+        </motion.h2>
 
         {/* Desktop */}
         <motion.div
@@ -426,7 +437,7 @@ export default function HomePage() {
 
       {/* ── Section 5: Value Propositions (2×2 grid) ─────────────────────── */}
       <Section className="bg-snow">
-        <h2 className="font-heading text-[40px] text-black text-center mb-16">
+        <h2 className="font-heading text-[28px] md:text-[40px] text-black text-center mb-16">
           ¿Por qué Webster?
         </h2>
         <motion.div
@@ -491,7 +502,7 @@ export default function HomePage() {
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 className="w-12 h-px bg-pine mb-8 origin-left"
               />
-              <p className="font-heading text-[32px] md:text-[26px] text-white leading-tight">
+              <p className="font-heading text-[26px] md:text-[32px] text-white leading-tight">
                 La solidez de una firma. La velocidad de la tecnología.
               </p>
             </div>
@@ -501,7 +512,7 @@ export default function HomePage() {
               <p className="font-mono text-xs text-pine uppercase tracking-[3px] mb-6">
                 Inteligencia Artificial
               </p>
-              <h2 className="font-heading text-[32px] md:text-[26px] text-white leading-snug mb-6">
+              <h2 className="font-heading text-[26px] md:text-[32px] text-white leading-snug mb-6">
                 Procesos automatizados. Criterio humano.
               </h2>
               <div className="space-y-3">
@@ -529,7 +540,7 @@ export default function HomePage() {
 
       {/* ── Section 7: Pricing ────────────────────────────────────────────── */}
       <Section className="bg-snow" id="precios">
-        <h2 className="font-heading text-[40px] text-black text-center">
+        <h2 className="font-heading text-[28px] md:text-[40px] text-black text-center">
           Precios transparentes.
         </h2>
         <p className="font-body text-lg text-zinc-600 text-center mt-4">
@@ -544,12 +555,17 @@ export default function HomePage() {
           className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12"
         >
           {[
-            { label: "Etapa 1", title: "Reclamación formal", percentage: 15 },
-            { label: "Etapa 2", title: "Acción legal", percentage: 25 },
-            { label: "Etapa 3", title: "Ejecución", percentage: 33 },
+            { label: "Etapa 1", title: "Reclamación formal", percentage: 15, featured: true },
+            { label: "Etapa 2", title: "Acción legal", percentage: 25, featured: false },
+            { label: "Etapa 3", title: "Ejecución", percentage: 33, featured: false },
           ].map((card) => (
             <motion.div key={card.label} variants={fadeUp}>
-              <Card className="text-center py-10">
+              <Card className={`text-center py-10 relative ${card.featured ? "border-pine bg-pine-light/30" : ""}`}>
+                {card.featured && (
+                  <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 inline-flex items-center bg-pine text-white font-mono text-[11px] uppercase tracking-[2px] px-4 py-1 rounded-full">
+                    Mas comun
+                  </span>
+                )}
                 <p className="font-mono text-xs text-pine uppercase tracking-[2px]">
                   {card.label}
                 </p>
@@ -576,7 +592,7 @@ export default function HomePage() {
 
       {/* ── Section 8: FAQ ────────────────────────────────────────────────── */}
       <Section className="bg-white">
-        <h2 className="font-heading text-[40px] text-black text-center mb-12">
+        <h2 className="font-heading text-[28px] md:text-[40px] text-black text-center mb-12">
           Preguntas frecuentes
         </h2>
         <Accordion items={faqItems} />
@@ -591,7 +607,7 @@ export default function HomePage() {
           viewport={{ once: true, margin: "-80px" }}
           className="max-w-2xl mx-auto px-6 text-center"
         >
-          <h2 className="font-heading text-[40px] md:text-[32px] text-white">
+          <h2 className="font-heading text-[28px] md:text-[40px] text-white">
             Deja de perseguir. Empieza a cobrar.
           </h2>
           <p className="font-body text-lg text-white/70 mt-4">
