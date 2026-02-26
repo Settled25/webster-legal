@@ -102,8 +102,7 @@ export default function ContadoresPage() {
               transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
               className="font-heading text-[38px] sm:text-[52px] md:text-[64px] leading-[1.05] text-black"
             >
-              Tú detectas el problema.{" "}
-              <span className="text-pine">Webster lo resuelve.</span>
+              Conviértete en el contador que resuelve los problemas de tu cliente.
             </motion.h1>
 
             <motion.p
