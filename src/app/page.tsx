@@ -565,7 +565,7 @@ export default function HomePage() {
           Precios transparentes.
         </h2>
         <p className="font-body text-lg text-zinc-600 text-center mt-4">
-          Solo cobramos si tú cobras.
+          Honorarios que se ajustan a tu necesidad. Te ayudamos con deudas comerciales de $1,000 a $15,000.
         </p>
 
         <motion.div
@@ -606,7 +606,7 @@ export default function HomePage() {
 
         <div className="text-center mt-8">
           <p className="font-body text-[15px] text-zinc-600">
-            Webster trabaja con deudas comerciales de $1,000 a $15,000.
+            Cero depósitos o facturación por hora. Solo cobramos si tú cobras.
           </p>
         </div>
       </Section>
