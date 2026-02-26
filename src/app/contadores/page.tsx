@@ -27,7 +27,9 @@ const steps = [
     number: "01",
     title: "Tu cliente nos contacta.",
     description:
-      "Dile que llame o llene el formulario en webster.legal. Nosotros nos encargamos del resto.",
+      "Dile que llame o llene el formulario.",
+    linkWord: "formulario",
+    linkHref: "https://form.jotform.com/260526971985067",
   },
   {
     number: "02",
@@ -185,7 +187,21 @@ export default function ContadoresPage() {
         >
           {steps.map((step, i) => (
             <div key={step.number} className="relative">
-              <StepCard {...step} />
+              <motion.div variants={fadeUp}>
+                <span className="font-mono text-[64px] text-pine font-light leading-none">
+                  {step.number}
+                </span>
+                <h3 className="font-heading text-[22px] text-black mt-4">{step.title}</h3>
+                <p className="font-body text-base text-zinc-600 leading-relaxed mt-3">
+                  {step.linkWord
+                    ? <>
+                        {step.description.split(step.linkWord)[0]}
+                        <a href={step.linkHref} target="_blank" rel="noopener noreferrer" className="text-pine underline hover:text-pine-dark transition-colors">{step.linkWord}</a>
+                        {step.description.split(step.linkWord)[1]}
+                      </>
+                    : step.description}
+                </p>
+              </motion.div>
               {i < steps.length - 1 && (
                 <svg
                   className="absolute top-8 -right-4 w-8 h-px overflow-visible"
@@ -220,7 +236,21 @@ export default function ContadoresPage() {
           />
           <div className="space-y-12">
             {steps.map((step) => (
-              <StepCard key={step.number} {...step} />
+              <motion.div key={step.number} variants={fadeUp}>
+                <span className="font-mono text-[64px] text-pine font-light leading-none">
+                  {step.number}
+                </span>
+                <h3 className="font-heading text-[22px] text-black mt-4">{step.title}</h3>
+                <p className="font-body text-base text-zinc-600 leading-relaxed mt-3">
+                  {step.linkWord
+                    ? <>
+                        {step.description.split(step.linkWord)[0]}
+                        <a href={step.linkHref} target="_blank" rel="noopener noreferrer" className="text-pine underline hover:text-pine-dark transition-colors">{step.linkWord}</a>
+                        {step.description.split(step.linkWord)[1]}
+                      </>
+                    : step.description}
+                </p>
+              </motion.div>
             ))}
           </div>
         </motion.div>

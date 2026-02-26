@@ -8,6 +8,7 @@ const navLinks = [
   { label: "Blog", href: "/blog" },
   { label: "Nosotros", href: "/sobre-nosotros" },
   { label: "Contacto", href: "/contacto" },
+  { label: "Contadores", href: "/contadores" },
 ];
 
 export function Footer() {
