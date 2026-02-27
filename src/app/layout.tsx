@@ -16,21 +16,24 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://webster.legal"),
+  metadataBase: new URL("https://www.webster.legal"),
   title: "Webster | Recupera tus cuentas por cobrar",
   description:
     "Webster es una firma de abogados en Puerto Rico que utiliza inteligencia artificial para recuperar cuentas comerciales por cobrar.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Webster | Recupera tus cuentas por cobrar",
     description:
       "Recuperamos tus cuentas por cobrar comerciales de hasta $15K. Solo cobramos si tú cobras.",
-    url: "https://webster.legal",
+    url: "https://www.webster.legal",
     siteName: "Webster",
     locale: "es_PR",
     type: "website",
     images: [
       {
-        url: "https://webster.legal/og-image.jpg",
+        url: "https://www.webster.legal/og-image.jpg",
         width: 1024,
         height: 1024,
         alt: "Webster - Recupera tus cuentas por cobrar",
