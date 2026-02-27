@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "webster.legal"
+        }
+      ],
+      "destination": "https://www.webster.legal/:path*",
+      "permanent": true
+    }
+  ]
+}
