@@ -1,67 +1,89 @@
-# CLAUDE.md
+# CLAUDE.md — webster-legal
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
-## Commands
-
-```bash
-npm run dev      # Start dev server at localhost:3000
-npm run build    # Production build (TypeScript checked, must pass zero errors)
-npm run start    # Serve production build
-```
-
-No linter or test runner is configured.
+Landing page for Webster, an AI-native debt collection law firm in Puerto Rico.
 
 ## Stack
+- **Next.js 15** (App Router, TypeScript)
+- **Tailwind CSS** with custom design tokens
+- **Framer Motion** for animations
+- **Deployed on Vercel** — push to `main` = auto-deploy
 
-- **Next.js 16** with App Router, TypeScript, `src/` directory
-- **Tailwind CSS v3** (pinned — do NOT upgrade to v4; the project was deliberately downgraded)
-- **Framer Motion** for all animations
-- **Lucide React** for icons
-- **Fonts:** `Instrument_Serif` via `next/font/google` (headings), `GeistSans` + `GeistMono` via the `geist` npm package (body/mono). All three are loaded in `src/app/layout.tsx` and injected as CSS variables on `<html>`.
+## Project Structure
+```
+src/
+  app/
+    layout.tsx          ← Root layout: JSON-LD schema, global metadata, fonts
+    page.tsx            ← Homepage (main landing page)
+    blog/               ← Blog index page
+    contacto/           ← Contact page
+    contadores/         ← Partner page for accountants (CPAs)
+    sobre-nosotros/     ← About page
+  components/
+    layout/
+      Navbar.tsx        ← Fixed top nav
+      Footer.tsx        ← Site footer
+      Providers.tsx     ← Client-side context wrappers
+      Section.tsx       ← Reusable section wrapper
+    ui/
+      Accordion.tsx     ← FAQ accordion
+      Button.tsx        ← CTA button
+      Card.tsx          ← Content card
+      PricingCard.tsx   ← Pricing tier card
+      StepCard.tsx      ← How-it-works step
+      TrustBar.tsx      ← Social proof bar
+      BlogPostCard.tsx  ← Blog listing card
+      ModalButton.tsx   ← Button with modal trigger
+      NewsletterForm.tsx
+      Banner.tsx
+  lib/
+    animations.ts       ← Framer Motion animation variants
+```
 
-## Architecture
-
-### Pages (App Router)
-| Route | File |
-|---|---|
-| `/` | `src/app/page.tsx` |
-| `/sobre-nosotros` | `src/app/sobre-nosotros/page.tsx` |
-| `/blog` | `src/app/blog/page.tsx` |
-| `/contacto` | `src/app/contacto/page.tsx` |
-
-Each route except `/` has a sibling `layout.tsx` that exports `metadata` (title, description). The pages themselves are `"use client"` components, so metadata must live in the layout — not the page.
-
-### Component layers
-- `src/components/layout/` — `Navbar`, `Footer`, `Section`. The `Section` component wraps every major content section: it applies `py-24 md:py-16`, `max-w-[1200px] mx-auto px-6`, and a `whileInView` fadeUp animation automatically.
-- `src/components/ui/` — atomic UI pieces. All animated components are `"use client"`.
-
-### Animation system
-All Framer Motion variants live in `src/lib/animations.ts` and are typed as `Variants`. The canonical patterns:
-- Entrance: `fadeUp` (with Y movement), `fadeIn` (opacity only), `slideFromLeft`
-- Groups: wrap parent in `staggerContainer`, children in individual `fadeUp` variants
-- All `whileInView` calls use `viewport={{ once: true, margin: "-80px" }}`
-
-### Design tokens (Tailwind)
-| Token | Value | Usage |
+## Design System (Tailwind)
+| Token | Value | Use |
 |---|---|---|
-| `pine` | `#2D5E4A` | Primary brand color — buttons, icons, accents |
-| `pine-dark` | `#1F4434` | Button hover state |
-| `pine-light` | `#E8F0EC` | Subtle backgrounds (icon containers) |
-| `snow` | `#FAFAFA` | Alternating section backgrounds |
-| `rounded-btn` | `2px` | All buttons |
-| `rounded-card` | `4px` | All cards and image containers |
-| Dark sections | `bg-[#09090B]` | Used as arbitrary class directly in JSX |
+| `snow` | `#FAFAFA` | Alternate section background |
+| `pine` | `#2D5E4A` | Primary brand green |
+| `pine-light` | `#E8F0EC` | Light green tint |
+| `pine-dark` | `#1F4434` | Hover state for pine |
+| `font-heading` | Instrument Serif | Headlines |
+| `font-body` | Geist Sans | Body text |
+| `font-mono` | Geist Mono | Labels, tags, numbers |
+| `rounded-btn` | `2px` | Button border radius |
+| `rounded-card` | `4px` | Card border radius |
+| `max-w-site` | `1200px` | Max content width |
 
-Font classes: `font-heading`, `font-body`, `font-mono` (map to the CSS variables above).
+## Canonical & SEO Rules
+- **Canonical domain:** `https://www.webster.legal` (www is canonical)
+- `https://webster.legal` → 308 redirect to www (configured on Vercel)
+- All `canonical` tags and `og:url` must use `https://www.webster.legal/...`
+- JSON-LD schema `url` must also use `https://www.webster.legal`
+- Language: `es` / locale: `es_PR`
 
-### Copy and content
-All Spanish copy is hardcoded directly in the page files — there is no CMS. Data arrays (FAQ items, blog posts, pricing cards, etc.) are defined as `const` arrays at the top of each page file, above the component. To edit copy, edit those arrays or the JSX inline strings.
+## Per-Page Metadata
+Each page has its own `layout.tsx` with `export const metadata`. When adding pages, always include:
+- `title`
+- `description`
+- `canonical` (alternates → canonical)
+- `og:url` matching canonical
 
-### Images
-Static assets go in `public/`. The attorney photo is at `public/foto-profesional.jpg` and rendered with `next/image` using explicit `width`/`height` props (not `fill`) to avoid aspect-ratio distortion.
+## Key Business Context
+- Jotform intake link: `https://form.jotform.com/260526971985067`
+- Contact: `info@webster.legal` / `(939) 353-0566`
+- Address: 1519 Ave. Ponce de León Suite 717, Cond. 1st Federal Saving Building, San Juan PR 00909-1718
+- LinkedIn: `https://www.linkedin.com/company/websterlegal/`
+- Fee model: 15% pre-litigation / 25% litigation / 33% execution (success-only)
+- Scope: Commercial debts $1K–$15K in Puerto Rico
 
-### Key constraints
-- The Figma MCP capture script is injected via `<script>` in `src/app/layout.tsx` — do not remove it.
-- `history.scrollRestoration = "manual"` is set in `src/app/page.tsx` to prevent the browser from restoring scroll position on refresh.
-- All UI text must remain in Spanish (Puerto Rico). No English copy in the UI.
+## Commands
+```bash
+npm run dev     # Local dev server (localhost:3000)
+npm run build   # Production build
+npm run start   # Start production build locally
+```
+
+## Workflow Notes
+- No test suite — verify changes visually via `npm run dev`
+- Push to `main` triggers Vercel deploy automatically
+- Never push directly to prod without reviewing the change locally first (or at minimum reading the diff carefully)
+- Em dashes (—) are banned in all copy. Use periods or commas instead.
