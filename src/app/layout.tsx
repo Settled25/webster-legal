@@ -65,7 +65,7 @@ export default function RootLayout({
               name: "Webster",
               description:
                 "Firma de abogados en Puerto Rico especializada en recuperación de cuentas por cobrar comerciales.",
-              url: "https://webster.legal",
+              url: "https://www.webster.legal",
               telephone: "+19393530566",
               email: "info@webster.legal",
               address: {
