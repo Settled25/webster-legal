@@ -1,17 +1,22 @@
-import Link from "next/link";
+"use client";
+import { useTranslations } from "next-intl";
 import { Linkedin } from "lucide-react";
-
-const navLinks = [
-  { label: "Inicio", href: "/" },
-  { label: "Servicios", href: "/#servicios" },
-  { label: "Precios", href: "/#precios" },
-  { label: "Blog", href: "/blog" },
-  { label: "Nosotros", href: "/sobre-nosotros" },
-  { label: "Contacto", href: "/contacto" },
-  { label: "Contadores", href: "/contadores" },
-];
+import { Link } from "@/i18n/navigation";
 
 export function Footer() {
+  const t = useTranslations("nav");
+  const tf = useTranslations("footer");
+
+  const navLinks = [
+    { label: t("inicio"), href: "/" },
+    { label: t("servicios"), href: "/#servicios" },
+    { label: t("precios"), href: "/#precios" },
+    { label: t("blog"), href: "/blog" },
+    { label: t("nosotros"), href: "/sobre-nosotros" },
+    { label: t("contacto"), href: "/contacto" },
+    { label: t("contadores"), href: "/contadores" },
+  ];
+
   return (
     <footer className="bg-[#09090B] pt-16 pb-8">
       <div className="max-w-[1200px] mx-auto px-6">
@@ -24,7 +29,7 @@ export function Footer() {
           {/* Column 2 */}
           <div>
             <p className="font-body text-xs font-semibold text-zinc-600 uppercase tracking-widest mb-4">
-              Navegaci&oacute;n
+              {tf("navHeading")}
             </p>
             <ul className="space-y-2">
               {navLinks.map((link) => (
@@ -43,7 +48,7 @@ export function Footer() {
           {/* Column 3 */}
           <div>
             <p className="font-body text-xs font-semibold text-zinc-600 uppercase tracking-widest mb-4">
-              Contacto
+              {tf("contactHeading")}
             </p>
             <ul className="space-y-2 font-body text-[15px] text-zinc-300">
               <li>info@webster.legal</li>
@@ -55,7 +60,7 @@ export function Footer() {
           {/* Column 4 */}
           <div>
             <p className="font-body text-xs font-semibold text-zinc-600 uppercase tracking-widest mb-4">
-              S&iacute;guenos
+              {tf("followHeading")}
             </p>
             <div className="flex gap-4">
               <a
@@ -75,7 +80,7 @@ export function Footer() {
 
         <div className="flex flex-col md:flex-row justify-between gap-4">
           <p className="text-[13px] text-zinc-600">
-            &copy; 2026 Webster Legal L.L.C. Todos los derechos reservados.
+            {tf("copyright")}
           </p>
         </div>
       </div>

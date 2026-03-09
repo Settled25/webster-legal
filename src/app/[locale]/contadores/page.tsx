@@ -1,53 +1,43 @@
 "use client";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Section } from "@/components/layout/Section";
-import { StepCard } from "@/components/ui/StepCard";
 import { ModalButton } from "@/components/ui/ModalButton";
 import { fadeUp, staggerContainer, drawLine } from "@/lib/animations";
-
-// ─── Data ────────────────────────────────────────────────────────────────────
-
-const bullets = [
-  {
-    bold: "Una carta de abogado cambia la conversación.",
-    rest: " Los deudores cooperan con los abogados porque quieren evitar problemas legales mayores.",
-  },
-  {
-    bold: "Webster protege a tu cliente.",
-    rest: " Webster vela por los intereses de tu cliente al tener deberes éticos más altos que una agencia de cobros.",
-  },
-  {
-    bold: "Webster tiene varias herramientas a su disposición.",
-    rest: " Webster puede utilizar el proceso judicial si el deudor se rehúsa a pagar.",
-  },
-];
-
-const steps = [
-  {
-    number: "01",
-    title: "Tu cliente nos contacta.",
-    description:
-      "Dile que llame o llene el formulario.",
-    linkWord: "formulario",
-    linkHref: "https://form.jotform.com/260526971985067",
-  },
-  {
-    number: "02",
-    title: "Evaluamos el caso con rapidez.",
-    description:
-      "Respuesta clara: qué podemos hacer, cuál es la estrategia, cuándo esperar resultados.",
-  },
-  {
-    number: "03",
-    title: "Recuperamos.",
-    description:
-      "La mayoría de los casos se resuelven antes de llegar a los tribunales con ambas partes contentas.",
-  },
-];
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function ContadoresPage() {
+  const t = useTranslations("contadores");
+
+  // ─── Data ──────────────────────────────────────────────────────────────────
+
+  const bullets = [
+    { bold: t("bullet1Bold"), rest: t("bullet1Rest") },
+    { bold: t("bullet2Bold"), rest: t("bullet2Rest") },
+    { bold: t("bullet3Bold"), rest: t("bullet3Rest") },
+  ];
+
+  const steps = [
+    {
+      number: t("step1Number"),
+      title: t("step1Title"),
+      description: t("step1Description"),
+      linkWord: t("step1LinkWord"),
+      linkHref: "https://form.jotform.com/260526971985067",
+    },
+    {
+      number: t("step2Number"),
+      title: t("step2Title"),
+      description: t("step2Description"),
+    },
+    {
+      number: t("step3Number"),
+      title: t("step3Title"),
+      description: t("step3Description"),
+    },
+  ];
+
   return (
     <main>
 
@@ -93,7 +83,7 @@ export default function ContadoresPage() {
               transition={{ delay: 0.1, duration: 0.5 }}
               className="font-mono text-xs text-pine uppercase tracking-[3px] mb-8"
             >
-              Para Contadores · Webster Legal
+              {t("label")}
             </motion.p>
 
             <motion.h1
@@ -102,7 +92,7 @@ export default function ContadoresPage() {
               transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
               className="font-heading text-[38px] sm:text-[52px] md:text-[64px] leading-[1.05] text-black"
             >
-              Conviértete en el contador que resuelve los problemas de tu cliente.
+              {t("h1")}
             </motion.h1>
 
             <motion.p
@@ -111,8 +101,7 @@ export default function ContadoresPage() {
               transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
               className="font-body text-xl text-zinc-600 mt-8 max-w-2xl leading-relaxed"
             >
-              Cuando las cuentas por cobrar de un cliente llevan meses sin moverse,
-              recomiéndanos. Webster recupera facturas B2B impagas con respaldo legal real.
+              {t("subtitle")}
             </motion.p>
 
             <motion.div
@@ -122,7 +111,7 @@ export default function ContadoresPage() {
               className="mt-10"
             >
               <ModalButton className="inline-flex items-center justify-center bg-pine text-white hover:bg-pine-dark transition-colors duration-200 rounded-btn h-14 px-8 font-body font-semibold text-[17px]">
-                Envía a tu cliente aquí →
+                {t("cta1")}
               </ModalButton>
             </motion.div>
           </div>
@@ -141,7 +130,7 @@ export default function ContadoresPage() {
             variants={fadeUp}
             className="font-heading text-[28px] md:text-[40px] text-black mb-12"
           >
-            No es lo mismo una agencia de cobros que una firma de abogados.
+            {t("sectionTitle")}
           </motion.h2>
 
           <div className="space-y-6">
@@ -173,7 +162,7 @@ export default function ContadoresPage() {
           viewport={{ once: true, margin: "-80px" }}
           className="font-heading text-[28px] md:text-[40px] text-black text-center mb-16"
         >
-          Sencillo para ti. Sencillo para tu cliente.
+          {t("howTitle")}
         </motion.h2>
 
         {/* Desktop */}
@@ -265,12 +254,11 @@ export default function ContadoresPage() {
           className="max-w-2xl mx-auto px-6 text-center"
         >
           <h2 className="font-heading text-[28px] md:text-[40px] text-white leading-snug">
-            La próxima vez que un cliente te mencione o identifiques una factura impaga,
-            ya sabes a quién recomendarle.
+            {t("ctaFinalText")}
           </h2>
           <div className="mt-10">
             <ModalButton className="inline-flex items-center justify-center bg-white text-pine hover:bg-zinc-100 transition-colors duration-200 rounded-btn h-14 px-8 font-body font-semibold text-[17px]">
-              Envía a tu cliente aquí →
+              {t("cta2")}
             </ModalButton>
           </div>
         </motion.div>

@@ -1,8 +1,10 @@
 "use client";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Check } from "lucide-react";
 
 export function NewsletterForm() {
+  const t = useTranslations("newsletterForm");
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -18,7 +20,7 @@ export function NewsletterForm() {
     >
       <input
         type="email"
-        placeholder="Tu correo electr&oacute;nico"
+        placeholder={t("placeholder")}
         required
         className="font-body text-base border border-zinc-200 rounded-btn h-12 px-4 bg-white focus:ring-2 focus:ring-pine focus:border-pine focus:outline-none transition flex-1"
       />
@@ -29,10 +31,10 @@ export function NewsletterForm() {
         {submitted ? (
           <>
             <Check size={18} />
-            Suscrito
+            {t("subscribed")}
           </>
         ) : (
-          "Suscribirme →"
+          t("subscribe")
         )}
       </button>
     </form>

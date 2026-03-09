@@ -1,14 +1,12 @@
 "use client";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { staggerContainer, fadeIn } from "@/lib/animations";
 
-const signals = [
-  "Redactado por abogados licenciados",
-  "Respaldado por inteligencia artificial",
-  "Sin costo si no cobramos",
-];
-
 export function TrustBar() {
+  const t = useTranslations("trustBar");
+  const signals = [t("signal1"), t("signal2"), t("signal3")];
+
   return (
     <div className="bg-[#09090B] h-14 flex items-center justify-center">
       <motion.div

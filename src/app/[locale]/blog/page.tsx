@@ -1,65 +1,14 @@
 "use client";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Card } from "@/components/ui/Card";
 import { BlogPostCard } from "@/components/ui/BlogPostCard";
 import { fadeUp, fadeIn, staggerContainer } from "@/lib/animations";
 import { useState } from "react";
 import { Check } from "lucide-react";
 
-const blogPosts = [
-  {
-    category: "COBRO COMERCIAL",
-    title: "Cómo proteger tus cuentas por cobrar antes de que sea tarde",
-    excerpt:
-      "La prevención es la mejor estrategia de cobro. Aprende a estructurar tus contratos y procesos de facturación para minimizar el riesgo de impago.",
-    date: "18 de febrero de 2026",
-  },
-  {
-    category: "DERECHO EMPRESARIAL",
-    title: "¿Qué hacer cuando un cliente no paga? Guía práctica",
-    excerpt:
-      "Una guía paso a paso sobre las opciones legales disponibles cuando un cliente comercial incumple con el pago de una factura.",
-    date: "14 de febrero de 2026",
-  },
-  {
-    category: "LITIGIO",
-    title: "Prelitigio vs. litigio: cuándo escalar el cobro",
-    excerpt:
-      "No todos los casos requieren demanda. Explicamos cómo evaluar cuándo la gestión extrajudicial es suficiente y cuándo es necesario litigar.",
-    date: "10 de febrero de 2026",
-  },
-  {
-    category: "FLUJO DE CAJA",
-    title: "El impacto de las cuentas incobrables en tu negocio",
-    excerpt:
-      "Las cuentas por cobrar vencidas afectan más que tu balance. Afectan tu capacidad de operar, invertir y crecer.",
-    date: "5 de febrero de 2026",
-  },
-  {
-    category: "DERECHO EMPRESARIAL",
-    title: "Contratos comerciales: cláusulas que protegen tu derecho al cobro",
-    excerpt:
-      "Las cláusulas correctas en tus contratos pueden ser la diferencia entre cobrar y absorber la pérdida. Estas son las esenciales.",
-    date: "1 de febrero de 2026",
-  },
-  {
-    category: "COBRO COMERCIAL",
-    title:
-      "Cobro comercial en Puerto Rico: lo que todo empresario debe saber",
-    excerpt:
-      "Una introducción al marco legal del cobro comercial en Puerto Rico, incluyendo plazos prescriptivos, jurisdicción y remedios disponibles.",
-    date: "28 de enero de 2026",
-  },
-];
-
-const categories = [
-  "Cobro Comercial",
-  "Derecho Empresarial",
-  "Litigio",
-  "Flujo de Caja",
-];
-
 function SidebarNewsletter() {
+  const t = useTranslations("blog");
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -71,15 +20,15 @@ function SidebarNewsletter() {
   return (
     <Card className="p-6">
       <h3 className="font-body font-semibold text-base text-black">
-        Newsletter
+        {t("sidebarNewsletterTitle")}
       </h3>
       <p className="font-body text-sm text-zinc-600 mt-2">
-        Recibe artículos y actualizaciones legales directamente en tu correo.
+        {t("sidebarNewsletterSubtitle")}
       </p>
       <form onSubmit={handleSubmit} className="mt-4">
         <input
           type="email"
-          placeholder="Tu correo electrónico"
+          placeholder={t("sidebarNewsletterPlaceholder")}
           required
           className="w-full h-10 text-sm border border-zinc-200 rounded-btn px-3 bg-white focus:ring-2 focus:ring-pine focus:border-pine focus:outline-none transition font-body"
         />
@@ -90,10 +39,10 @@ function SidebarNewsletter() {
           {submitted ? (
             <>
               <Check size={16} />
-              Suscrito ✓
+              {t("sidebarNewsletterSubscribed")}
             </>
           ) : (
-            "Suscribirme →"
+            t("sidebarNewsletterButton")
           )}
         </button>
       </form>
@@ -102,6 +51,49 @@ function SidebarNewsletter() {
 }
 
 export default function BlogPage() {
+  const t = useTranslations("blog");
+
+  const blogPosts = [
+    {
+      category: t("post1Category"),
+      title: t("post1Title"),
+      excerpt: t("post1Excerpt"),
+      date: t("post1Date"),
+    },
+    {
+      category: t("post2Category"),
+      title: t("post2Title"),
+      excerpt: t("post2Excerpt"),
+      date: t("post2Date"),
+    },
+    {
+      category: t("post3Category"),
+      title: t("post3Title"),
+      excerpt: t("post3Excerpt"),
+      date: t("post3Date"),
+    },
+    {
+      category: t("post4Category"),
+      title: t("post4Title"),
+      excerpt: t("post4Excerpt"),
+      date: t("post4Date"),
+    },
+    {
+      category: t("post5Category"),
+      title: t("post5Title"),
+      excerpt: t("post5Excerpt"),
+      date: t("post5Date"),
+    },
+    {
+      category: t("post6Category"),
+      title: t("post6Title"),
+      excerpt: t("post6Excerpt"),
+      date: t("post6Date"),
+    },
+  ];
+
+  const categories = [t("cat1"), t("cat2"), t("cat3"), t("cat4")];
+
   return (
     <main>
       {/* Section 1: Page Header */}
@@ -112,10 +104,9 @@ export default function BlogPage() {
           animate="visible"
           className="max-w-[1200px] mx-auto px-6 text-center"
         >
-          <h1 className="font-heading text-[48px] text-black">Blog</h1>
+          <h1 className="font-heading text-[48px] text-black">{t("h1")}</h1>
           <p className="font-body text-[17px] text-zinc-600 mt-2">
-            Actualizaciones legales, estrategias de cobro y noticias del derecho
-            comercial en Puerto Rico.
+            {t("subtitle")}
           </p>
         </motion.div>
       </section>
@@ -127,30 +118,27 @@ export default function BlogPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
             <div className="bg-zinc-100 aspect-video md:aspect-auto md:h-full flex items-center justify-center min-h-[240px]">
               <span className="font-body text-zinc-600 text-sm">
-                Imagen destacada
+                {t("featuredImage")}
               </span>
             </div>
             <div className="p-10">
               <span className="font-mono text-xs text-pine uppercase tracking-[2px]">
-                COBRO COMERCIAL
+                {t("featuredCategory")}
               </span>
               <h2 className="font-heading text-[28px] text-black mt-3">
-                Cinco errores que cometen los negocios al cobrar facturas
-                vencidas
+                {t("featuredTitle")}
               </h2>
               <p className="font-body text-base text-zinc-600 mt-4 leading-relaxed">
-                Muchos negocios esperan demasiado para actuar cuando un cliente
-                no paga. En este artículo explicamos los errores más comunes y
-                cómo evitarlos para proteger tu flujo de caja.
+                {t("featuredExcerpt")}
               </p>
               <p className="font-body text-sm text-zinc-600 mt-4">
-                18 de febrero de 2026
+                {t("featuredDate")}
               </p>
               <a
                 href="#"
                 className="font-body font-medium text-base text-pine mt-4 inline-block hover:underline"
               >
-                Leer más →
+                {t("featuredReadMore")}
               </a>
             </div>
           </div>
@@ -179,7 +167,7 @@ export default function BlogPage() {
             <SidebarNewsletter />
             <Card className="p-6">
               <h3 className="font-body font-semibold text-base text-black">
-                Categorías
+                {t("sidebarCategoriesTitle")}
               </h3>
               <ul className="mt-3 space-y-2">
                 {categories.map((cat) => (

@@ -1,32 +1,35 @@
 "use client";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Mail, Phone, Clock } from "lucide-react";
 import { fadeUp, fadeIn, staggerContainer } from "@/lib/animations";
 
 const JOTFORM_URL = "https://form.jotform.com/260526971985067";
 
-const contactInfo = [
-  {
-    icon: Mail,
-    label: "Correo electrónico",
-    value: "info@webster.legal",
-    href: "mailto:info@webster.legal",
-  },
-  {
-    icon: Phone,
-    label: "Teléfono",
-    value: "(939) 353-0566",
-    href: "tel:+19393530566",
-  },
-  {
-    icon: Clock,
-    label: "Horario de atención",
-    value: "9:00 AM – 6:00 PM AST\nLunes – Viernes",
-    href: null,
-  },
-];
-
 export default function ContactoPage() {
+  const t = useTranslations("contacto");
+
+  const contactInfo = [
+    {
+      icon: Mail,
+      label: t("emailLabel"),
+      value: "info@webster.legal",
+      href: "mailto:info@webster.legal",
+    },
+    {
+      icon: Phone,
+      label: t("phoneLabel"),
+      value: "(939) 353-0566",
+      href: "tel:+19393530566",
+    },
+    {
+      icon: Clock,
+      label: t("hoursLabel"),
+      value: t("hoursValue"),
+      href: null,
+    },
+  ];
+
   return (
     <main>
       {/* Header */}
@@ -38,14 +41,13 @@ export default function ContactoPage() {
           className="max-w-[1200px] mx-auto px-6"
         >
           <p className="font-mono text-xs text-pine uppercase tracking-[3px] mb-6">
-            Webster · Puerto Rico
+            {t("label")}
           </p>
           <h1 className="font-heading text-[56px] md:text-[40px] text-white leading-tight">
-            Contáctanos
+            {t("h1")}
           </h1>
           <p className="font-body text-lg text-zinc-400 mt-4 max-w-xl">
-            ¿Tienes cuentas por cobrar? Agenda una consulta gratuita con un
-            abogado.
+            {t("subtitle")}
           </p>
         </motion.div>
       </section>
@@ -64,10 +66,10 @@ export default function ContactoPage() {
             >
               <motion.div variants={fadeUp}>
                 <h2 className="font-heading text-[28px] text-black">
-                  Información de contacto
+                  {t("infoTitle")}
                 </h2>
                 <p className="font-body text-base text-zinc-600 mt-2 leading-relaxed">
-                  Escríbenos o llámanos. Te responderemos lo antes posible.
+                  {t("infoSubtitle")}
                 </p>
               </motion.div>
 
@@ -114,10 +116,10 @@ export default function ContactoPage() {
             >
               <div className="bg-snow border border-zinc-200 rounded-card p-10 flex flex-col items-center justify-center text-center">
                 <h3 className="font-heading text-[24px] text-black">
-                  Solicitar consulta gratuita
+                  {t("ctaTitle")}
                 </h3>
                 <p className="font-body text-sm text-zinc-600 mt-2">
-                  Completa el formulario y un abogado se comunicará contigo.
+                  {t("ctaSubtitle")}
                 </p>
                 <div className="mt-8">
                   <a
@@ -126,12 +128,11 @@ export default function ContactoPage() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center w-full h-12 bg-pine text-white font-body font-semibold text-base rounded-btn hover:bg-pine-dark transition-colors duration-200 px-8"
                   >
-                    Solicitar consulta gratuita →
+                    {t("ctaButton")}
                   </a>
                 </div>
                 <p className="font-body text-xs text-zinc-400 text-center mt-5">
-                  Al completar el formulario aceptas que un abogado de
-                  Webster se comunique contigo para evaluar tu caso.
+                  {t("disclaimer")}
                 </p>
               </div>
             </motion.div>

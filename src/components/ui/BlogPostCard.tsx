@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { fadeUp } from "@/lib/animations";
 import { Card } from "./Card";
 
@@ -16,6 +17,8 @@ export function BlogPostCard({
   excerpt,
   date,
 }: BlogPostCardProps) {
+  const t = useTranslations("blogPostCard");
+
   return (
     <motion.div variants={fadeUp}>
       <Card className="p-0 overflow-hidden h-full flex flex-col">
@@ -37,7 +40,7 @@ export function BlogPostCard({
             href="#"
             className="font-body font-medium text-sm text-pine mt-2 hover:underline"
           >
-            Leer m&aacute;s &rarr;
+            {t("readMore")}
           </a>
         </div>
       </Card>

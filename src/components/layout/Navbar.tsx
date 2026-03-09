@@ -1,24 +1,27 @@
 "use client";
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslations, useLocale } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/Button";
 import { staggerContainer, fadeUp } from "@/lib/animations";
-
-const links = [
-  { label: "Inicio", href: "/" },
-  { label: "Servicios", href: "/#servicios" },
-  { label: "Precios", href: "/#precios" },
-  { label: "Blog", href: "/blog" },
-  { label: "Nosotros", href: "/sobre-nosotros" },
-  { label: "Contacto", href: "/contacto" },
-  { label: "Contadores", href: "/contadores" },
-];
+import { Link, usePathname } from "@/i18n/navigation";
 
 export function Navbar() {
+  const t = useTranslations("nav");
+  const locale = useLocale();
   const pathname = usePathname();
+  const otherLocale = locale === "es" ? "en" : "es";
+
+  const links = [
+    { label: t("inicio"), href: "/" },
+    { label: t("servicios"), href: "/#servicios" },
+    { label: t("precios"), href: "/#precios" },
+    { label: t("blog"), href: "/blog" },
+    { label: t("nosotros"), href: "/sobre-nosotros" },
+    { label: t("contacto"), href: "/contacto" },
+    { label: t("contadores"), href: "/contadores" },
+  ];
+
   const darkHero = pathname === "/contacto";
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -75,13 +78,26 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
+
+            {/* Language toggle */}
+            <Link
+              href={pathname}
+              locale={otherLocale}
+              className={`font-mono text-[13px] transition-colors duration-200 border px-2 py-0.5 rounded ${
+                scrolled || !darkHero
+                  ? "text-zinc-500 border-zinc-300 hover:text-black hover:border-zinc-500"
+                  : "text-zinc-400 border-zinc-600 hover:text-white hover:border-zinc-400"
+              }`}
+            >
+              {t("switchLang")}
+            </Link>
           </div>
 
           {/* Mobile hamburger */}
           <button
             onClick={() => setMenuOpen(true)}
             className={`md:hidden transition-colors duration-300 ${scrolled || !darkHero ? "text-black" : "text-white"}`}
-            aria-label="Abrir menú"
+            aria-label={t("openMenu")}
           >
             <Menu size={24} />
           </button>
@@ -109,7 +125,7 @@ export function Navbar() {
               <button
                 onClick={() => setMenuOpen(false)}
                 className="text-black"
-                aria-label="Cerrar menú"
+                aria-label={t("closeMenu")}
               >
                 <X size={24} />
               </button>
@@ -132,7 +148,17 @@ export function Navbar() {
                   </Link>
                 </motion.div>
               ))}
-              {/* Subscribe button removed */}
+              {/* Language toggle */}
+              <motion.div variants={fadeUp}>
+                <Link
+                  href={pathname}
+                  locale={otherLocale}
+                  onClick={() => setMenuOpen(false)}
+                  className="font-mono text-base text-zinc-400 hover:text-black transition-colors duration-200 border border-zinc-300 px-3 py-1 rounded hover:border-zinc-500"
+                >
+                  {t("switchLang")}
+                </Link>
+              </motion.div>
             </motion.div>
           </motion.div>
         )}

@@ -1,6 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import {
   Shield,
   Scale,
@@ -17,102 +18,74 @@ import { fadeUp, staggerContainer, fadeIn, drawLine } from "@/lib/animations";
 import { ModalButton } from "@/components/ui/ModalButton";
 import { Accordion } from "@/components/ui/Accordion";
 
-// ─── Data ────────────────────────────────────────────────────────────────────
-
-const steps = [
-  {
-    number: "01",
-    title: "Cuéntanos tu caso",
-    description:
-      "Coordinamos una breve consulta para evaluar tu caso y definir la estrategia de cobro.",
-  },
-  {
-    number: "02",
-    title: "Envía tus documentos",
-    description:
-      "Envíanos por email, WhatsApp o mensaje de texto tus facturas, contratos y cualquier evidencia relacionada a la deuda.",
-  },
-  {
-    number: "03",
-    title: "Actuamos por ti",
-    description:
-      "Webster se encarga del resto. Te consultamos sobre las ofertas del deudor y te preguntamos antes de escalar el proceso.",
-  },
-];
-
-const valueCards = [
-  {
-    icon: Wallet,
-    title: "Recupera tu dinero",
-    body: "Bríndale aire a tu negocio recuperando todo el dinero que tiene regado entre clientes.",
-    tag: "Dinero para operar",
-  },
-  {
-    icon: Inbox,
-    title: "Enfócate en tu negocio",
-    body: "Para de perseguir a tus clientes para que te paguen.",
-    tag: "No pierdas el tiempo",
-  },
-  {
-    icon: Scale,
-    title: "Demuestra profesionalismo",
-    body: "Impresiona a tus clientes demostrando que tu compañía tiene los mejores recursos para operar.",
-    tag: "Luce profesional",
-  },
-  {
-    icon: Shield,
-    title: "Protegemos tu reputación",
-    body: "Tus clientes estarán contentos de pagarte. Sorprende con un abogado firme, pero respetuoso, que hace fácil pagar.",
-    tag: "Protección de marca",
-  },
-];
-
-const faqItems = [
-  {
-    question: "¿Webster es una agencia de cobro?",
-    answer: "No. Webster es una firma de abogados, no una agencia de cobro. Velamos por la preservación de tu relación comercial durante el proceso antes de tomar alguna acción legal seria.",
-  },
-  {
-    question: "¿Cuál es la deuda mínima para trabajar con Webster?",
-    answer: "Webster trabaja con deudas comerciales de $1,000 a $15,000. Si tu deuda no está dentro de este rango, te lo haremos saber en la consulta gratuita y te orientaremos sobre tus opciones.",
-  },
-  {
-    question: "¿Cómo funciona el modelo de honorarios?",
-    answer: "Webster trabaja con honorarios de contingencia. Solo cobramos un porcentaje de lo que recuperamos para ti. Si no recuperamos nada, no debes nada.",
-  },
-  {
-    question: "¿Cuánto tiempo toma el proceso de cobro?",
-    answer: "Depende de la complejidad del caso y la respuesta del deudor. Muchas gestiones de prelitigio se resuelven en las primeras dos a cuatro semanas. Los casos que requieren litigio pueden tomar varios meses.",
-  },
-  {
-    question: "¿Qué documentos necesito para comenzar?",
-    answer: "Generalmente necesitamos: la factura o contrato original, evidencia de la deuda (correos electrónicos, órdenes de compra, recibos de entrega), y cualquier comunicación previa con el deudor. En la consulta inicial te indicamos exactamente qué aplica a tu caso.",
-  },
-  {
-    question: "¿Puedo enviar más de una factura?",
-    answer: "Sí. Muchos negocios tienen varias cuentas por cobrar pendientes. Evaluamos cada una y te damos una estrategia completa.",
-  },
-  {
-    question: "¿El deudor sabrá que contraté a Webster?",
-    answer: "Sí. Nos comunicamos directamente con el deudor en tu representación. Toda comunicación es profesional, clara y respaldada por un abogado.",
-  },
-  {
-    question: "¿Webster maneja cobros fuera de Puerto Rico?",
-    answer: "Actualmente nos enfocamos en deudas comerciales bajo las leyes de Puerto Rico. Si tienes una deuda con nexo a otra jurisdicción, podemos evaluarlo en la consulta gratuita.",
-  },
-  {
-    question: "¿Qué pasa si el deudor no tiene dinero para pagar?",
-    answer: "En la consulta inicial evaluamos la viabilidad del cobro. Si determinamos que el deudor no tiene capacidad de pago o que la recuperación es improbable, te lo comunicamos con transparencia antes de proceder. No tomamos casos que no tienen probabilidades razonables de éxito.",
-  },
-];
-
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function HomePage() {
+  const t = useTranslations("home");
+
   useEffect(() => {
     history.scrollRestoration = "manual";
     window.scrollTo(0, 0);
   }, []);
+
+  // ─── Data ──────────────────────────────────────────────────────────────────
+
+  const steps = [
+    {
+      number: t("step1Number"),
+      title: t("step1Title"),
+      description: t("step1Description"),
+    },
+    {
+      number: t("step2Number"),
+      title: t("step2Title"),
+      description: t("step2Description"),
+    },
+    {
+      number: t("step3Number"),
+      title: t("step3Title"),
+      description: t("step3Description"),
+    },
+  ];
+
+  const valueCards = [
+    {
+      icon: Wallet,
+      title: t("why1Title"),
+      body: t("why1Body"),
+      tag: t("why1Tag"),
+    },
+    {
+      icon: Inbox,
+      title: t("why2Title"),
+      body: t("why2Body"),
+      tag: t("why2Tag"),
+    },
+    {
+      icon: Scale,
+      title: t("why3Title"),
+      body: t("why3Body"),
+      tag: t("why3Tag"),
+    },
+    {
+      icon: Shield,
+      title: t("why4Title"),
+      body: t("why4Body"),
+      tag: t("why4Tag"),
+    },
+  ];
+
+  const faqItems = [
+    { question: t("faq1Q"), answer: t("faq1A") },
+    { question: t("faq2Q"), answer: t("faq2A") },
+    { question: t("faq3Q"), answer: t("faq3A") },
+    { question: t("faq4Q"), answer: t("faq4A") },
+    { question: t("faq5Q"), answer: t("faq5A") },
+    { question: t("faq6Q"), answer: t("faq6A") },
+    { question: t("faq7Q"), answer: t("faq7A") },
+    { question: t("faq8Q"), answer: t("faq8A") },
+    { question: t("faq9Q"), answer: t("faq9A") },
+  ];
 
   return (
     <main>
@@ -155,7 +128,7 @@ export default function HomePage() {
               transition={{ delay: 0.1, duration: 0.5 }}
               className="font-mono text-xs text-pine uppercase tracking-[3px] mb-8"
             >
-              Firma de Abogados · Puerto Rico
+              {t("heroTagline")}
             </motion.p>
 
             <motion.h1
@@ -164,9 +137,9 @@ export default function HomePage() {
               transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
               className="font-heading text-[38px] sm:text-[52px] md:text-[72px] leading-[1.05] text-black"
             >
-              Cobra lo que te deben.
+              {t("heroH1Line1")}
               <br />
-              <span className="text-pine">Protege tu flujo de dinero y reputación.</span>
+              <span className="text-pine">{t("heroH1Line2")}</span>
             </motion.h1>
 
             <motion.p
@@ -175,7 +148,7 @@ export default function HomePage() {
               transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
               className="font-body text-xl text-zinc-600 mt-8 max-w-2xl leading-relaxed"
             >
-              Recuperamos tus cuentas por cobrar comerciales de hasta $15K. Solo cobramos si tú cobras.
+              {t("heroSubtitle")}
             </motion.p>
 
             <motion.div
@@ -185,13 +158,13 @@ export default function HomePage() {
               className="mt-10"
             >
               <ModalButton className="inline-flex items-center justify-center bg-pine text-white hover:bg-pine-dark transition-colors duration-200 rounded-btn h-14 px-8 font-body font-semibold text-[17px]">
-                Consulta gratis →
+                {t("heroCta")}
               </ModalButton>
               <a
                 href="/#servicios"
                 className="flex items-center gap-1.5 mt-4 font-body text-[15px] text-pine hover:text-pine-dark transition-colors duration-200 underline underline-offset-4 w-fit"
               >
-                Ver cómo funciona
+                {t("heroHowItWorks")}
                 <ChevronDown size={15} className="flex-shrink-0" aria-hidden />
               </a>
             </motion.div>
@@ -211,19 +184,13 @@ export default function HomePage() {
             variants={fadeUp}
             className="font-heading text-[28px] md:text-[40px] text-black text-center mb-12"
           >
-            Las deudas pequeñas se quedan sin cobrar.
+            {t("problemH2")}
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
-              {
-                title: "Tu flujo de efectivo absorbe el golpe",
-                body: "Completaste un trabajo de $5,000 como subcontratista. El contratista te promete pagar, pero luego te ignora. Esos $5,000 los necesitas para materiales, nómina y tu próximo proyecto.",
-              },
-              {
-                title: "Cobrar por tu cuenta te debilita",
-                body: "Llevas meses persiguiendo a tu cliente con la factura de tus servicios de contabilidad. Cada intento ignorado te quita tiempo de servir a clientes que sí pagan a tiempo.",
-              },
+              { title: t("problem1Title"), body: t("problem1Body") },
+              { title: t("problem2Title"), body: t("problem2Body") },
             ].map((card) => (
               <motion.div key={card.title} variants={fadeUp}>
                 <Card className="h-full flex flex-col border-zinc-200">
@@ -249,7 +216,7 @@ export default function HomePage() {
           viewport={{ once: true, margin: "-80px" }}
           className="font-heading text-[28px] md:text-[40px] text-black text-center mb-16"
         >
-          Cómo funciona
+          {t("howH2")}
         </motion.h2>
 
         {/* Desktop */}
@@ -312,7 +279,7 @@ export default function HomePage() {
             href="https://form.jotform.com/260526971985067"
             className="inline-flex items-center justify-center bg-pine text-white hover:bg-pine-dark transition-colors duration-200 rounded-btn h-14 px-8 font-body font-semibold text-[17px]"
           >
-            ¿Califico? →
+            {t("qualify")}
           </a>
         </motion.div>
       </Section>
@@ -321,10 +288,10 @@ export default function HomePage() {
       <Section className="bg-white">
         <div className="text-center mb-16">
           <h2 className="font-heading text-[28px] md:text-[40px] text-black">
-            Un proceso diseñado para resolver tu caso.
+            {t("processH2")}
           </h2>
           <p className="font-body text-lg text-zinc-600 mt-4 max-w-2xl mx-auto">
-            Solo escalamos cuando es necesario y tú lo apruebas.
+            {t("processSubtitle")}
           </p>
         </div>
 
@@ -347,13 +314,13 @@ export default function HomePage() {
             {/* Content */}
             <div className="text-center max-w-xl">
               <span className="inline-flex items-center gap-1.5 bg-pine-light text-pine font-mono text-[11px] uppercase tracking-[2px] px-3 py-1 rounded-full mb-4">
-                Mayoría de casos
+                {t("stage1Badge")}
               </span>
               <h3 className="font-heading text-[28px] text-black">
-                Reclamación formal
+                {t("stage1Title")}
               </h3>
               <p className="font-body text-base text-zinc-600 mt-3 leading-relaxed">
-                Evaluamos tu situación y decidimos juntos el mejor enfoque, desde un recordatorio amistoso hasta una carta formal de reclamación. Negociamos directamente con el deudor y te mantenemos informado. La mayoría de los casos se resuelven aquí.
+                {t("stage1Description")}
               </p>
             </div>
 
@@ -365,8 +332,8 @@ export default function HomePage() {
                   <Mail size={14} className="text-pine" />
                 </div>
                 <div className="min-w-0">
-                  <p className="font-body text-sm font-semibold text-black">Comunicación con Acme Corp.</p>
-                  <p className="font-mono text-[11px] text-zinc-400 truncate">Factura #1247 · $8,400 pendiente desde octubre</p>
+                  <p className="font-body text-sm font-semibold text-black">{t("mockupTitle")}</p>
+                  <p className="font-mono text-[11px] text-zinc-400 truncate">{t("mockupSubtitle")}</p>
                 </div>
               </div>
               {/* Messages */}
@@ -375,16 +342,16 @@ export default function HomePage() {
                 <div className="flex justify-start">
                   <div className="max-w-[85%] bg-white border border-zinc-200 rounded-card px-4 py-3">
                     <p className="font-body text-sm text-zinc-600 leading-relaxed">
-                      Saludos, recibimos su comunicación. No vamos a pagar. Los productos llegaron defectuosos.
+                      {t("mockupDebtorMessage")}
                     </p>
-                    <p className="font-mono text-[10px] text-zinc-400 mt-2">Acme Corp.</p>
+                    <p className="font-mono text-[10px] text-zinc-400 mt-2">{t("mockupDebtorSender")}</p>
                   </div>
                 </div>
                 {/* Webster message */}
                 <div className="flex justify-end">
                   <div className="max-w-[85%] bg-pine-light border border-pine/10 rounded-card px-4 py-3">
                     <p className="font-body text-sm text-zinc-700 leading-relaxed">
-                      Gracias por responder nuestro correo. Revisamos la documentación de esta transacción. Adjuntamos un acuse de recibo firmado por su personal confirmando que los productos se recibieron en buen estado. ¿Tiene alguna prueba que nos pueda enviar que establezca que los productos llegaron defectuosos?
+                      {t("mockupWebsterMessage")}
                     </p>
                     <p className="font-mono text-[10px] text-pine mt-2">Webster</p>
                   </div>
@@ -393,7 +360,7 @@ export default function HomePage() {
               {/* Status */}
               <div className="border-t border-zinc-100 px-5 py-3 flex items-center gap-2">
                 <Check size={14} className="text-pine" />
-                <span className="font-mono text-xs text-pine">Pago procesado</span>
+                <span className="font-mono text-xs text-pine">{t("mockupStatus")}</span>
               </div>
             </div>
           </motion.div>
@@ -415,10 +382,10 @@ export default function HomePage() {
             <div className="w-px h-6 bg-zinc-200" />
             <div className="text-center max-w-xl">
               <h3 className="font-heading text-[22px] text-black">
-                Acción legal
+                {t("stage2Title")}
               </h3>
               <p className="font-body text-base text-zinc-500 mt-2 leading-relaxed">
-                Si la gestión directa no es suficiente, presentamos una acción sumaria de cobro ante el tribunal para obtener sentencia a tu favor.
+                {t("stage2Description")}
               </p>
             </div>
           </motion.div>
@@ -440,10 +407,10 @@ export default function HomePage() {
             <div className="w-px h-6 bg-zinc-200" />
             <div className="text-center max-w-xl">
               <h3 className="font-heading text-[22px] text-black">
-                Ejecución
+                {t("stage3Title")}
               </h3>
               <p className="font-body text-base text-zinc-500 mt-2 leading-relaxed">
-                De ser necesario, evaluamos y ejecutamos procedimientos de embargo u otros mecanismos legales para hacer efectiva la sentencia obtenida.
+                {t("stage3Description")}
               </p>
             </div>
           </motion.div>
@@ -454,7 +421,7 @@ export default function HomePage() {
       {/* ── Section 5: Value Propositions (2×2 grid) ─────────────────────── */}
       <Section className="bg-snow">
         <h2 className="font-heading text-[28px] md:text-[40px] text-black text-center mb-16">
-          ¿Por qué Webster?
+          {t("whyH2")}
         </h2>
         <motion.div
           variants={staggerContainer}
@@ -494,7 +461,7 @@ export default function HomePage() {
             href="https://form.jotform.com/260526971985067"
             className="inline-flex items-center justify-center bg-pine text-white hover:bg-pine-dark transition-colors duration-200 rounded-btn h-14 px-8 font-body font-semibold text-[17px]"
           >
-            Empieza a cobrar →
+            {t("whyCta")}
           </a>
         </motion.div>
       </Section>
@@ -524,24 +491,20 @@ export default function HomePage() {
                 className="w-12 h-px bg-pine mb-8 origin-left"
               />
               <p className="font-heading text-[26px] md:text-[32px] text-white leading-tight">
-                La solidez de una firma. La velocidad de la tecnología.
+                {t("aiPullQuote")}
               </p>
             </div>
 
             {/* Right — cards (~60%) */}
             <div className="md:col-span-3">
               <p className="font-mono text-xs text-pine uppercase tracking-[3px] mb-6">
-                Inteligencia Artificial
+                {t("aiLabel")}
               </p>
               <h2 className="font-heading text-[26px] md:text-[32px] text-white leading-snug mb-6">
-                Procesos automatizados. Criterio humano.
+                {t("aiH2")}
               </h2>
               <div className="space-y-3">
-                {[
-                  "Utilizamos IA para redactar documentos legales, analizar tu documentación y coordinar cada etapa del proceso de cobro.",
-                  "La IA garantiza consistencia y precisión en cada gestión, eliminando los errores que encarecen y retrasan el proceso tradicional.",
-                  "Cada documento es revisado y firmado por un abogado antes de enviarse.",
-                ].map((text, i) => (
+                {[t("aiPoint1"), t("aiPoint2"), t("aiPoint3")].map((text, i) => (
                   <div
                     key={i}
                     className="rounded-card px-5 py-4 font-body text-base text-zinc-300 leading-relaxed"
@@ -562,10 +525,10 @@ export default function HomePage() {
       {/* ── Section 7: Pricing ────────────────────────────────────────────── */}
       <Section className="bg-snow" id="precios">
         <h2 className="font-heading text-[28px] md:text-[40px] text-black text-center">
-          Precios transparentes.
+          {t("pricingH2")}
         </h2>
         <p className="font-body text-lg text-zinc-600 text-center mt-4">
-          Honorarios que se ajustan a tu necesidad. Te ayudamos con deudas comerciales de $1,000 a $15,000.
+          {t("pricingSubtitle")}
         </p>
 
         <motion.div
@@ -576,15 +539,15 @@ export default function HomePage() {
           className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12"
         >
           {[
-            { label: "Etapa 1", title: "Reclamación formal", percentage: 15, featured: true },
-            { label: "Etapa 2", title: "Acción legal", percentage: 25, featured: false },
-            { label: "Etapa 3", title: "Ejecución", percentage: 33, featured: false },
+            { label: t("pricingStage1Label"), title: t("pricingStage1Title"), percentage: 15, featured: true },
+            { label: t("pricingStage2Label"), title: t("pricingStage2Title"), percentage: 25, featured: false },
+            { label: t("pricingStage3Label"), title: t("pricingStage3Title"), percentage: 33, featured: false },
           ].map((card) => (
             <motion.div key={card.label} variants={fadeUp}>
               <Card className={`text-center py-10 relative ${card.featured ? "border-pine bg-pine-light/30" : ""}`}>
                 {card.featured && (
                   <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 inline-flex items-center bg-pine text-white font-mono text-[11px] uppercase tracking-[2px] px-4 py-1 rounded-full">
-                    Mayoría de casos
+                    {t("pricingBadge")}
                   </span>
                 )}
                 <p className="font-mono text-xs text-pine uppercase tracking-[2px]">
@@ -597,7 +560,7 @@ export default function HomePage() {
                   {card.percentage}%
                 </p>
                 <p className="font-body text-sm text-zinc-500 mt-2">
-                  de la cantidad recuperada
+                  {t("pricingRecovered")}
                 </p>
               </Card>
             </motion.div>
@@ -606,7 +569,7 @@ export default function HomePage() {
 
         <div className="text-center mt-8">
           <p className="font-body text-[15px] text-zinc-600">
-            Cero depósitos o facturación por hora. Solo cobramos si tú cobras.
+            {t("pricingDisclaimer")}
           </p>
         </div>
       </Section>
@@ -614,7 +577,7 @@ export default function HomePage() {
       {/* ── Section 8: FAQ ────────────────────────────────────────────────── */}
       <Section className="bg-white">
         <h2 className="font-heading text-[28px] md:text-[40px] text-black text-center mb-12">
-          Preguntas frecuentes
+          {t("faqH2")}
         </h2>
         <Accordion items={faqItems} />
       </Section>
@@ -635,14 +598,14 @@ export default function HomePage() {
           className="max-w-2xl mx-auto px-6 text-center"
         >
           <h2 className="font-heading text-[28px] md:text-[40px] text-white">
-            Deja de perseguir. Empieza a cobrar.
+            {t("ctaH2")}
           </h2>
           <p className="font-body text-lg text-white/70 mt-4">
-            Consulta gratuita con un abogado.
+            {t("ctaSubtitle")}
           </p>
           <div className="mt-8">
             <ModalButton className="inline-flex items-center justify-center bg-white text-pine hover:bg-zinc-100 transition-colors duration-200 rounded-btn h-14 px-8 font-body text-[17px] font-semibold">
-              Habla con un abogado →
+              {t("ctaButton")}
             </ModalButton>
           </div>
         </motion.div>
