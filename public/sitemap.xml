@@ -1,19 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://webster.legal/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webster.legal/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webster.legal/en" />
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://webster.legal/en</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webster.legal/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webster.legal/en" />
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://webster.legal/sobre-nosotros</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webster.legal/sobre-nosotros" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webster.legal/en/sobre-nosotros" />
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://webster.legal/en/sobre-nosotros</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webster.legal/sobre-nosotros" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webster.legal/en/sobre-nosotros" />
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://webster.legal/contacto</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webster.legal/contacto" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webster.legal/en/contacto" />
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://webster.legal/en/contacto</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webster.legal/contacto" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webster.legal/en/contacto" />
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://webster.legal/contadores</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webster.legal/contadores" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webster.legal/en/contadores" />
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://webster.legal/en/contadores</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webster.legal/contadores" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webster.legal/en/contadores" />
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://webster.legal/blog</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webster.legal/blog" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webster.legal/en/blog" />
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://webster.legal/en/blog</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://webster.legal/blog" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webster.legal/en/blog" />
     <priority>0.6</priority>
   </url>
 </urlset>
