@@ -24,10 +24,10 @@ export async function generateMetadata({
     metadataBase: new URL("https://www.webster.legal"),
     title: isEs
       ? "Webster | Recupera tus cuentas por cobrar"
-      : "Webster | Recover Your Accounts Receivable",
+      : "Webster | Get Paid for Your Work",
     description: isEs
       ? "Webster es una firma de abogados en Puerto Rico que utiliza inteligencia artificial para recuperar cuentas comerciales por cobrar."
-      : "Webster is a law firm in Puerto Rico that uses artificial intelligence to recover commercial accounts receivable.",
+      : "Webster is a law firm in Puerto Rico that uses AI to recover unpaid B2B invoices. You only pay when we collect.",
     alternates: {
       canonical: isEs ? "/" : "/en",
       languages: {
@@ -38,10 +38,10 @@ export async function generateMetadata({
     openGraph: {
       title: isEs
         ? "Webster | Recupera tus cuentas por cobrar"
-        : "Webster | Recover Your Accounts Receivable",
+        : "Webster | Get Paid for Your Work",
       description: isEs
         ? "Recuperamos tus cuentas por cobrar comerciales de hasta $15K. Solo cobramos si tú cobras."
-        : "We recover your commercial accounts receivable up to $15K. We only charge if you collect.",
+        : "We recover unpaid B2B invoices up to $15K. You only pay when we collect.",
       url: isEs ? "https://www.webster.legal" : "https://www.webster.legal/en",
       siteName: "Webster",
       locale: isEs ? "es_PR" : "en_US",
@@ -53,7 +53,7 @@ export async function generateMetadata({
           height: 1024,
           alt: isEs
             ? "Webster - Recupera tus cuentas por cobrar"
-            : "Webster - Recover Your Accounts Receivable",
+            : "Webster - Get Paid for Your Work",
         },
       ],
     },
