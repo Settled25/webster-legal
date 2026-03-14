@@ -110,7 +110,7 @@ export default function ContadoresPage() {
               transition={{ delay: 0.5, duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
               className="mt-10"
             >
-              <ModalButton className="inline-flex items-center justify-center bg-pine text-white hover:bg-pine-dark transition-colors duration-200 rounded-btn h-14 px-8 font-body font-semibold text-[17px]">
+              <ModalButton className="inline-flex items-center justify-center w-full sm:w-auto bg-pine text-white hover:bg-pine-dark transition-colors duration-200 rounded-btn h-14 px-8 font-body font-semibold text-[17px]">
                 {t("cta1")}
               </ModalButton>
             </motion.div>
@@ -244,6 +244,28 @@ export default function ContadoresPage() {
         </motion.div>
       </Section>
 
+      {/* ── Mid-page CTA ──────────────────────────────────────────────────── */}
+      <section className="bg-white pb-16">
+        <div className="max-w-[1200px] mx-auto px-6 w-full text-center">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            className="flex flex-col items-center gap-6"
+          >
+            <motion.p variants={fadeUp} className="font-heading text-[22px] md:text-[28px] text-black">
+              {t("midCtaQuestion")}
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <ModalButton className="inline-flex items-center justify-center w-full sm:w-auto bg-pine text-white hover:bg-pine-dark transition-colors duration-200 rounded-btn h-14 px-8 font-body font-semibold text-[17px]">
+                {t("cta1")}
+              </ModalButton>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── Section 4: Final CTA ──────────────────────────────────────────── */}
       <section className="py-24 bg-[#09090B]">
         <motion.div
@@ -256,11 +278,23 @@ export default function ContadoresPage() {
           <h2 className="font-heading text-[28px] md:text-[40px] text-white leading-snug">
             {t("ctaFinalText")}
           </h2>
-          <div className="mt-10">
-            <ModalButton className="inline-flex items-center justify-center bg-white text-pine hover:bg-zinc-100 transition-colors duration-200 rounded-btn h-14 px-8 font-body font-semibold text-[17px]">
+          <p className="font-body text-sm text-zinc-400 mt-5">
+            {t("feeNote")}
+          </p>
+          <div className="mt-6">
+            <ModalButton className="inline-flex items-center justify-center w-full sm:w-auto bg-white text-pine hover:bg-zinc-100 transition-colors duration-200 rounded-btn h-14 px-8 font-body font-semibold text-[17px]">
               {t("cta2")}
             </ModalButton>
           </div>
+          <p className="font-body text-sm text-zinc-500 mt-4">
+            {t("contactNote")}{" "}
+            <a
+              href="tel:+19393530566"
+              className="text-zinc-400 underline hover:text-zinc-200 transition-colors"
+            >
+              {t("contactPhone")}
+            </a>
+          </p>
         </motion.div>
       </section>
 
