@@ -87,6 +87,9 @@ export default function HomePage() {
     { question: t("faq9Q"), answer: t("faq9A") },
   ];
 
+  const ctaBtnClass =
+    "inline-flex items-center justify-center bg-pine text-white hover:bg-pine-dark transition-colors duration-200 rounded-btn h-14 px-8 font-body font-semibold text-[17px]";
+
   return (
     <main>
 
@@ -98,6 +101,7 @@ export default function HomePage() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 1.2 }}
           className="absolute inset-0 pointer-events-none hidden md:block"
+          aria-hidden="true"
           style={{
             backgroundImage: "radial-gradient(circle, #2D5E4A 1px, transparent 1px)",
             backgroundSize: "32px 32px",
@@ -112,6 +116,7 @@ export default function HomePage() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 1.4 }}
           className="absolute inset-0 pointer-events-none md:hidden"
+          aria-hidden="true"
           style={{
             backgroundImage: "radial-gradient(circle, #2D5E4A 1px, transparent 1px)",
             backgroundSize: "40px 40px",
@@ -157,9 +162,10 @@ export default function HomePage() {
               transition={{ delay: 0.5, duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
               className="mt-10"
             >
-              <ModalButton className="inline-flex items-center justify-center bg-pine text-white hover:bg-pine-dark transition-colors duration-200 rounded-btn h-14 px-8 font-body font-semibold text-[17px]">
+              <ModalButton className={ctaBtnClass}>
                 {t("heroCta")}
               </ModalButton>
+
               <a
                 href="/#servicios"
                 className="flex items-center gap-1.5 mt-4 font-body text-[15px] text-pine hover:text-pine-dark transition-colors duration-200 underline underline-offset-4 w-fit"
@@ -180,6 +186,12 @@ export default function HomePage() {
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
         >
+          <motion.p
+            variants={fadeUp}
+            className="font-mono text-xs text-pine uppercase tracking-[3px] text-center mb-4"
+          >
+            {t("problemLabel")}
+          </motion.p>
           <motion.h2
             variants={fadeUp}
             className="font-heading text-[28px] md:text-[40px] text-black text-center mb-12"
@@ -209,15 +221,26 @@ export default function HomePage() {
 
       {/* ── Section 3: Cómo funciona (client intake steps) ───────────────── */}
       <Section className="bg-snow" id="servicios">
-        <motion.h2
-          variants={fadeUp}
+        <motion.div
+          variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="font-heading text-[28px] md:text-[40px] text-black text-center mb-16"
+          className="text-center mb-16"
         >
-          {t("howH2")}
-        </motion.h2>
+          <motion.p
+            variants={fadeUp}
+            className="font-mono text-xs text-pine uppercase tracking-[3px] mb-4"
+          >
+            {t("howLabel")}
+          </motion.p>
+          <motion.h2
+            variants={fadeUp}
+            className="font-heading text-[28px] md:text-[40px] text-black"
+          >
+            {t("howH2")}
+          </motion.h2>
+        </motion.div>
 
         {/* Desktop */}
         <motion.div
@@ -277,7 +300,9 @@ export default function HomePage() {
         >
           <a
             href="https://form.jotform.com/260526971985067"
-            className="inline-flex items-center justify-center bg-pine text-white hover:bg-pine-dark transition-colors duration-200 rounded-btn h-14 px-8 font-body font-semibold text-[17px]"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={ctaBtnClass}
           >
             {t("qualify")}
           </a>
@@ -287,6 +312,9 @@ export default function HomePage() {
       {/* ── Section 4: Nuestro Proceso (legal escalation stages) ─────────── */}
       <Section className="bg-white">
         <div className="text-center mb-16">
+          <p className="font-mono text-xs text-pine uppercase tracking-[3px] mb-4">
+            {t("processLabel")}
+          </p>
           <h2 className="font-heading text-[28px] md:text-[40px] text-black">
             {t("processH2")}
           </h2>
@@ -420,6 +448,9 @@ export default function HomePage() {
 
       {/* ── Section 5: Value Propositions (2×2 grid) ─────────────────────── */}
       <Section className="bg-snow">
+        <p className="font-mono text-xs text-pine uppercase tracking-[3px] text-center mb-4">
+          {t("whyLabel")}
+        </p>
         <h2 className="font-heading text-[28px] md:text-[40px] text-black text-center mb-16">
           {t("whyH2")}
         </h2>
@@ -459,7 +490,9 @@ export default function HomePage() {
         >
           <a
             href="https://form.jotform.com/260526971985067"
-            className="inline-flex items-center justify-center bg-pine text-white hover:bg-pine-dark transition-colors duration-200 rounded-btn h-14 px-8 font-body font-semibold text-[17px]"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={ctaBtnClass}
           >
             {t("whyCta")}
           </a>
@@ -468,7 +501,7 @@ export default function HomePage() {
 
       {/* ── Section 6: AI Section ─────────────────────────────────────────── */}
       <section
-        className="py-24 md:py-16"
+        className="py-14 md:py-20"
         style={{
           background: "radial-gradient(ellipse at 50% 40%, #17171a 0%, #09090B 55%, #040406 100%)",
         }}
@@ -504,9 +537,9 @@ export default function HomePage() {
                 {t("aiH2")}
               </h2>
               <div className="space-y-3">
-                {[t("aiPoint1"), t("aiPoint2"), t("aiPoint3")].map((text, i) => (
+                {[t("aiPoint1"), t("aiPoint2"), t("aiPoint3")].map((text) => (
                   <div
-                    key={i}
+                    key={text}
                     className="rounded-card px-5 py-4 font-body text-base text-zinc-300 leading-relaxed"
                     style={{
                       background: "rgba(255,255,255,0.05)",
@@ -524,6 +557,9 @@ export default function HomePage() {
 
       {/* ── Section 7: Pricing ────────────────────────────────────────────── */}
       <Section className="bg-snow" id="precios">
+        <p className="font-mono text-xs text-pine uppercase tracking-[3px] text-center mb-4">
+          {t("pricingLabel")}
+        </p>
         <h2 className="font-heading text-[28px] md:text-[40px] text-black text-center">
           {t("pricingH2")}
         </h2>
@@ -571,21 +607,50 @@ export default function HomePage() {
           <p className="font-body text-[15px] text-zinc-600">
             {t("pricingDisclaimer")}
           </p>
+          <div className="mt-8">
+            <a
+              href="https://form.jotform.com/260526971985067"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={ctaBtnClass}
+            >
+              {t("pricingCta")}
+            </a>
+          </div>
         </div>
       </Section>
 
       {/* ── Section 8: FAQ ────────────────────────────────────────────────── */}
       <Section className="bg-white">
+        <p className="font-mono text-xs text-pine uppercase tracking-[3px] text-center mb-4">
+          {t("faqLabel")}
+        </p>
         <h2 className="font-heading text-[28px] md:text-[40px] text-black text-center mb-12">
           {t("faqH2")}
         </h2>
         <Accordion items={faqItems} />
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="text-center mt-12"
+        >
+          <a
+            href="https://form.jotform.com/260526971985067"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={ctaBtnClass}
+          >
+            {t("faqCta")}
+          </a>
+        </motion.div>
       </Section>
 
       {/* ── Section 9: Final CTA ──────────────────────────────────────────── */}
       <section
         id="contacto"
-        className="py-24"
+        className="py-14 md:py-24"
         style={{
           background: "radial-gradient(ellipse at 50% 35%, #3d7560 0%, #2D5E4A 50%, #1c3e30 100%)",
         }}
